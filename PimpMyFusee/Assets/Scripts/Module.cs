@@ -56,14 +56,12 @@ public class Module : MonoBehaviour
         // COST
         if (ManagerShop.Instance != null)
             ManagerShop.Instance.AddEspace(cost);
-            
     }
 
 
     private void OnDestroy()                                                        // ON DESTROY
     {
         // COST
-        
         if (ManagerShop.Instance != null)
             ManagerShop.Instance.AddEspace(-cost);
     }
@@ -83,7 +81,7 @@ public class Module : MonoBehaviour
     public void TriggerModule(bool state = true)
     {
         activated = state;
-        rigidbody2d.simulated = state;
+        rigidbody2d.isKinematic = !state;
 
 
         // Sub modules
@@ -103,6 +101,7 @@ public class Module : MonoBehaviour
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, startRotation);
             transform.position = startPosition;
             rigidbody2d.velocity = baseVelocity;
+            rigidbody2d.angularVelocity = 0;
         }
     }
 
