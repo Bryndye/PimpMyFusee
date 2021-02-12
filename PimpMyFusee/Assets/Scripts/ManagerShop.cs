@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManagerShop : MonoBehaviour
+public class ManagerShop : Singleton<ManagerShop>
 {
     [SerializeField] private GameObject moduleDrag;
 
@@ -40,10 +40,9 @@ public class ManagerShop : MonoBehaviour
         moduleDrag.transform.position = new Vector3(moduleDrag.transform.position.x, moduleDrag.transform.position.y, 0);
     }
 
-    public void GetModule(string name)
+    public void GetModule(GameObject prefab)
     {
-        Debug.Log(name);
-        //Instantiate get index and module for resources
-        moduleDrag = Instantiate(Resources.Load<GameObject>("Modules/ModuleTest"));
+        //Debug.Log(prefab);
+        moduleDrag = Instantiate(Resources.Load<GameObject>("Modules/"+prefab.name));
     }
 }
