@@ -10,6 +10,13 @@ public class ManagerShop : Singleton<ManagerShop>
     [SerializeField] private GameObject moduleDrag;
     [SerializeField] private Transform helpPlayer;
 
+    private void Awake()
+    {
+        if (Instance != this)
+        {
+            Destroy(this);
+        }
+    }
 
     private void Update()
     {
@@ -51,7 +58,7 @@ public class ManagerShop : Singleton<ManagerShop>
             if (hit.collider != null)
             {
                 moduleDrag = hit.collider.gameObject;
-                //Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
+                Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
             }
         }
     }
