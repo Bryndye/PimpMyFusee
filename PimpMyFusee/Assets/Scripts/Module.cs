@@ -8,9 +8,19 @@ using UnityEngine;
 // Main script for the modules
 public class Module : MonoBehaviour
 {
+    [Header("COMPONENTS")]
     [SerializeField] Rigidbody2D rigidbody2d = null;
+
+
     bool activated = false;
 
+    [Header("SUB MODULES")]
+    [SerializeField] Reactor01 reactor01 = null;
+
+
+
+    [Header("EDITOR")]
+    [SerializeField] GameObject editorObjects = null;
 
 
 
@@ -18,15 +28,20 @@ public class Module : MonoBehaviour
 
 
 
+
+
+    #region FUNCTIONS
     private void Awake()                                                            // AWAKE
     {
         GetComponentsIfNotReferenced();
+        DisableEditorInfo();
     }
 
     private void Start()                                                             // START
     {
         // When the module appears on screen it is not activated yet
         TriggerModule(false);
+        
     }
 
 
@@ -37,9 +52,19 @@ public class Module : MonoBehaviour
 
 
     // MODULE
+    /// <summary>
+    /// Triggers all of the module's functions to start the simulation
+    /// </summary>
+    /// <param name="state">Should the module be turned on or off</param>
     public void TriggerModule(bool state = true)
     {
+        activated = state;
         rigidbody2d.isKinematic = !state;
+
+
+        // Sub modules
+        if (reactor01 != null)
+            reactor01.TriggerReactor();
     }
 
 
@@ -52,7 +77,7 @@ public class Module : MonoBehaviour
 
 
 
-
+    // EDITOR
     private void GetComponentsIfNotReferenced()
     {
         // GET COMPONENTS IS NOT REFERENCED
@@ -61,9 +86,15 @@ public class Module : MonoBehaviour
                 rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
-    // EDITOR
-    private void OnDrawGizmosSelected()
+    private void DisableEditorInfo()
+    {
+        if (editorObjects != null)
+            editorObjects.SetActive(false);
+    }
+
+    private void OnDrawGizmosSelected()                                                         // ON DRAW GIZMOS SELECTED
     {
         GetComponentsIfNotReferenced();
     }
+    #endregion
 }

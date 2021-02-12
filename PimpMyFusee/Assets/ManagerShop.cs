@@ -11,6 +11,10 @@ public class ManagerShop : MonoBehaviour
         if (moduleDrag != null)
         {
             MoveTarget();
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                moduleDrag.transform.Rotate(new Vector3(moduleDrag.transform.localEulerAngles.x, moduleDrag.transform.localEulerAngles.y, 45));
+            }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 moduleDrag = null;
@@ -36,9 +40,9 @@ public class ManagerShop : MonoBehaviour
         moduleDrag.transform.position = new Vector3(moduleDrag.transform.position.x, moduleDrag.transform.position.y, 0);
     }
 
-    public void GetModule(int index)
+    public void GetModule(string name)
     {
-        Debug.Log(index);
+        Debug.Log(name);
         //Instantiate get index and module for resources
         moduleDrag = Instantiate(Resources.Load<GameObject>("Modules/ModuleTest"));
     }
