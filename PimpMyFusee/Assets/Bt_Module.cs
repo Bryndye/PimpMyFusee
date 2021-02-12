@@ -22,6 +22,8 @@ public class Bt_Module : MonoBehaviour
         icon = GetComponent<Image>();
         bt = GetComponent<Button>();
         text = GetComponentInChildren<Text>();
+        var g = Instantiate(Resources.Load<GameObject>("Modules/" + prefabModule.name));
+        //EspacePris = g.GetComponent<Module>().cost;
 
         text.text = prefabModule.name;
         //icon.sprite = Resources.Load<Sprite>("Sprite/"+prefabModule.name);
