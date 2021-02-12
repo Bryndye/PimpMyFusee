@@ -147,8 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedModuleScript: {fileID: 2372076872803473686}
   rigidbody2d: {fileID: 5738033349849330576}
-  reactorpower: 10
-  horizontalNoiseLimits: {x: -10, y: 10}
+  reactorpower: 5000
+  horizontalNoiseLimits: {x: -30, y: 30}
 --- !u!1001 &2372076873480525528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.y
@@ -246,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291791, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_Name
-      value: ReactorModule01
+      value: ReactorModule01 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8019461468414399771, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_Color.g
