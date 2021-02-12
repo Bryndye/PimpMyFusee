@@ -14,9 +14,14 @@ public class Module : MonoBehaviour
 
     bool activated = false;
     [SerializeField] public int cost = 20;
+    Vector2 startPosition = new Vector2();
+    float startRotation = 0;
+    Vector2 baseVelocity = new Vector2(0, 0);
+
 
     [Header("SUB MODULES")]
     [SerializeField] Reactor01 reactor01 = null;
+
 
 
 
@@ -36,6 +41,11 @@ public class Module : MonoBehaviour
     {
         GetComponentsIfNotReferenced();
         DisableEditorInfo();
+
+
+        // Get base values
+        startPosition = transform.position;
+        startRotation = transform.eulerAngles.z;
     }
 
     private void Start()                                                             // START
@@ -44,20 +54,18 @@ public class Module : MonoBehaviour
         TriggerModule(false);
 
         // COST
-        /*
         if (ManagerShop.Instance != null)
             ManagerShop.Instance.AddEspace(cost);
-            */
+            
     }
 
 
     private void OnDestroy()                                                        // ON DESTROY
     {
         // COST
-        /*
+        
         if (ManagerShop.Instance != null)
             ManagerShop.Instance.AddEspace(-cost);
-            */
     }
 
 
@@ -75,17 +83,45 @@ public class Module : MonoBehaviour
     public void TriggerModule(bool state = true)
     {
         activated = state;
-        rigidbody2d.isKinematic = !state;
+        rigidbody2d.simulated = state;
 
 
         // Sub modules
         if (reactor01 != null)
-            reactor01.TriggerReactor(true);
+            reactor01.TriggerReactor(state);
+
+
+
+        // Position
+        if (state)
+        {
+            startRotation = transform.eulerAngles.z;
+            startPosition = transform.position;
+        } 
+        else
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, startRotation);
+            transform.position = startPosition;
+            rigidbody2d.velocity = baseVelocity;
+        }
     }
 
 
 
 
+
+    public void CheckIfConnected()
+    {
+
+    }
+
+
+
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Debug.Log(collision);
+    }
 
 
 

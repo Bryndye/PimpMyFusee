@@ -11,10 +11,12 @@ public class Manager : MonoBehaviour
     // SINGLETON
     [HideInInspector] public static Manager Instance = null;
 
-    [SerializeField] CameraMovements cameraScript = null;
- 
 
-    [Tooltip("List of all the instanciated modules")]
+    [SerializeField] CameraMovements cameraScript = null;
+    [SerializeField] GameObject playButton = null;
+    [SerializeField] GameObject restartbutton = null;
+
+
     List<Module> modulesList = new List<Module>();
     [SerializeField] bool getAllModulesOnStart = false;
 
@@ -31,6 +33,10 @@ public class Manager : MonoBehaviour
         // SINGLETON
         Instance = this;
         GetReferences();
+
+
+        // Set up display
+        restartbutton.SetActive(false);
     }
 
 
@@ -60,6 +66,14 @@ public class Manager : MonoBehaviour
         // Start camera
         if (cameraScript != null)
             cameraScript.StartCamera(on);
+
+
+
+        // GARAGE UI
+        if (playButton != null)
+            playButton.SetActive(!on);
+        if (restartbutton != null)
+            restartbutton.SetActive(on);
     }
 
 
