@@ -11,16 +11,21 @@ public class ManagerShop : MonoBehaviour
         if (moduleDrag != null)
         {
             MoveTarget();
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if (moduleDrag != null)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 moduleDrag = null;
             }
-            else
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (hit.collider != null)
+                {
+                    moduleDrag = hit.collider.gameObject;
+                    //Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
+                }
             }
         }
     }
