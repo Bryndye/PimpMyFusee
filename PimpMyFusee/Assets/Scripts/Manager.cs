@@ -5,14 +5,27 @@ using UnityEngine;
 
 
 
-// Manages the game
+// Manages the game simulation
 public class Manager : MonoBehaviour
 {
+    // SINGLETON
+    public static Manager Instance = null;
+
+
     [Tooltip("List of all the instanciated modules")]
     [SerializeField] List<Module> modulesList = new List<Module>();
     [SerializeField] bool getAllModulesOnStart = false;
 
 
+
+
+
+
+    private void Awake()                                                                                        // AWAKE
+    {   
+        // SINGLETON
+        Instance = this;
+    }
 
 
 

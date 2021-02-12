@@ -22,7 +22,7 @@ public class Reactor01 : MonoBehaviour
 
 
 
-
+    #region FUNCTIONS
     private void Awake()                                                            // AWAKE
     {
         GetComponentsIfNotReferenced();
@@ -82,4 +82,5 @@ public class Reactor01 : MonoBehaviour
     {
         GetComponentsIfNotReferenced();
     }
+    #endregion
 }
