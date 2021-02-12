@@ -10,8 +10,12 @@ public class Reactor01 : MonoBehaviour
     [Header("COMPONENTS")]
     [SerializeField] Module connectedModuleScript = null;
     [SerializeField] Rigidbody2D rigidbody2d = null;
-    bool reactorActivated = false;
 
+
+    [Header("PARAMETERS")]
+    [SerializeField] float reactorpower = 10f;
+    [SerializeField] Vector2 horizontalNoiseLimits = new Vector2(-10f, 10f);
+    bool reactorActivated = false;
 
 
 
@@ -29,7 +33,14 @@ public class Reactor01 : MonoBehaviour
         if (isActiveAndEnabled && enabled)
         {
             if (reactorActivated)
-                rigidbody2d.AddForce(Vector2.up);
+            {
+                // Unstable trajectory
+                Vector2 horizontalNoise = transform.right * Random.Range(horizontalNoiseLimits.x, horizontalNoiseLimits.y);
+
+
+                if (rigidbody2d != null)
+                    rigidbody2d.AddForce((Vector2)transform.up * reactorpower + horizontalNoise, ForceMode2D.Force);
+            }
         }
     }
 
@@ -44,6 +55,7 @@ public class Reactor01 : MonoBehaviour
     public void TriggerReactor(bool state = false)
     {
         reactorActivated = state;
+        Debug.Log(state);
     }
 
 

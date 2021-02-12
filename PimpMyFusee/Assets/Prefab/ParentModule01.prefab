@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 8019461466902291784}
   - component: {fileID: 8019461466902291785}
   - component: {fileID: 686231502}
+  - component: {fileID: 686231499}
   m_Layer: 0
   m_Name: ParentModule01
   m_TagString: Untagged
@@ -295,7 +296,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 8019461466902291784}
+  reactor01: {fileID: 0}
   editorObjects: {fileID: 1414713829}
+--- !u!114 &686231499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8019461466902291791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6cf6d647a0cdb4eb6e9c0de8f69ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8019461468124071860
 GameObject:
   m_ObjectHideFlags: 0

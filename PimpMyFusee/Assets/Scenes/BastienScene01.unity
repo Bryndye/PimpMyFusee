@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &686231502 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 686231502, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
-  m_PrefabInstance: {fileID: 8019461467298589317}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adeeba9b3ed15a645a3c4ea8426e924c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &708581199
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,8 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2a5b411c2da434b947c675879718ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modulesList:
-  - {fileID: 686231502}
+  modulesList: []
   getAllModulesOnStart: 1
 --- !u!4 &971940651
 Transform:
@@ -290,6 +278,7 @@ GameObject:
   - component: {fileID: 1072004339}
   - component: {fileID: 1072004338}
   - component: {fileID: 1072004337}
+  - component: {fileID: 1072004340}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -362,24 +351,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1075939993 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2372076874221946685, guid: b4a7efc451f5aef488e9216f972f7a07, type: 3}
-  m_PrefabInstance: {fileID: 1369610440}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1075939994
+--- !u!114 &1072004340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075939993}
+  m_GameObject: {fileID: 1072004336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b7d44baf9f08a24db13cd2a3ddc74b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 55f4faedf319bb748a93d9a3c283e25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalScaleToKeep: {x: 1, y: 1, z: 1}
 --- !u!1 &1149176817
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReactorModule01
       objectReference: {fileID: 0}
+    - target: {fileID: 6029938151694706289, guid: b4a7efc451f5aef488e9216f972f7a07, type: 3}
+      propertyPath: reactorpower
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a7efc451f5aef488e9216f972f7a07, type: 3}
 --- !u!1 &1404632391
@@ -767,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3923809208072816945, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3923809208072816945, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
       propertyPath: m_LocalPosition.z
