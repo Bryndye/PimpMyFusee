@@ -43,13 +43,17 @@ public class Module : MonoBehaviour
         // When the module appears on screen it is not activated yet
         TriggerModule(false);
 
-        // COST HERE
+        // COST
+        if (ManagerShop.Instance != null)
+            ManagerShop.Instance.AddEspace(cost);
     }
 
 
     private void OnDestroy()                                                        // ON DESTROY
     {
-        // UNDO COST HERE
+        // COST
+        if (ManagerShop.Instance != null)
+            ManagerShop.Instance.AddEspace(-cost);
     }
 
 
