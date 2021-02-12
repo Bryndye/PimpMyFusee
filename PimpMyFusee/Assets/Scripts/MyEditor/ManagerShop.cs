@@ -19,6 +19,7 @@ public class ManagerShop : Singleton<ManagerShop>
         }
         ModuleDrag();
         UpdateScore();
+        CheckMoney();
     }
 
     #region ModuleInWorld
@@ -84,12 +85,29 @@ public class ManagerShop : Singleton<ManagerShop>
 
     [Header("tune")]
     public int Gold;
-
+    public int PriceUp = 100;
+    [SerializeField] private Button bt_up;
     public void AddEspaceMax()
     {
+        Gold -= PriceUp;
         EspaceMax += 10;
+        PriceUp += 100;
     }
-
+    private void CheckMoney()
+    {
+        if (bt_up != null)
+        {
+            bt_up.GetComponentInChildren<TextMeshProUGUI>().text = PriceUp.ToString();
+            if (Gold >= PriceUp)
+            {
+                bt_up.interactable = true;
+            }
+            else
+            {
+                bt_up.interactable = false;
+            }
+        }
+    }
     #endregion
 
     #region UI
