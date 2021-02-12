@@ -8,6 +8,7 @@ public class CameraMovements : MonoBehaviour
 {
     [Header("COMPONENTS")]
     [SerializeField] Rigidbody2D rigidbody2d = null;
+    [SerializeField] Camera cameraa = null;
 
     [Header("REFERENCES")]
     [SerializeField] GameObject moduleToFollow = null;
@@ -21,6 +22,15 @@ public class CameraMovements : MonoBehaviour
         game,
     }
 
+    [Header("PARAMETERS")]
+    [SerializeField] float speedMultiplier = 5f;
+    [SerializeField] float cameraSpeedLerpSpeedMultiplier = 5f;
+    [SerializeField] float upperSizeLimit = 20;
+    [SerializeField] float upperSpeedLimit = 50;
+    float baseSize = 5;
+    Vector3 basePosition = new Vector3(0, 0, -10);
+    
+
 
 
 
@@ -33,16 +43,85 @@ public class CameraMovements : MonoBehaviour
     private void Awake()                                                                    // AWAKE
     {
         GetReferences();
+        baseSize = cameraa.orthographicSize;
+        basePosition = transform.position;
     }
 
 
 
+    private void FixedUpdate()
+    {
+        if (enabled & isActiveAndEnabled)
+            switch (cameraMode)
+            {
+                case CameraMode.game:
+                    // Movements
+                    if (moduleToFollow != null)
+                        CameraMovementsHandle(moduleToFollow.transform.position);
+
+
+                    // SIZE
+                    float newSize = baseSize;
+                    float speed = rigidbody2d.velocity.magnitude;
+                    if (speed < 1)
+                        newSize = baseSize;
+                    else if (speed >= upperSpeedLimit)
+                        newSize = upperSizeLimit;
+                    else
+                        newSize = baseSize + (upperSizeLimit - baseSize) * (speed / upperSpeedLimit);
+
+
+                    cameraa.orthographicSize = Mathf.Lerp(cameraa.orthographicSize, newSize, Time.deltaTime);
+                    break;
+                case CameraMode.garage:
+                    // Movements
+                    CameraMovementsHandle(basePosition);
+
+
+                    cameraa.orthographicSize = Mathf.Lerp(cameraa.orthographicSize, baseSize, Time.deltaTime * 10);
+                    break;
+            }
+    }
+
+
+
+
+
+    void CameraMovementsHandle(Vector3 positionToFollow)
+    {
+        Vector3 newCameraVelocity = new Vector3(positionToFollow.x - transform.position.x, positionToFollow.y - transform.position.y, 0) * speedMultiplier;
+        rigidbody2d.velocity = Vector3.Lerp(rigidbody2d.velocity, newCameraVelocity, Time.fixedDeltaTime * cameraSpeedLerpSpeedMultiplier);
+    }
+
+
+
+
+
+
+
+
+
+    /// <summary>
+    /// Sets the camera game behaviour
+    /// </summary>
+    /// <param name="on"></param>
     public void StartCamera(bool on = false)
     {
+        // Behaviour
         if (on)
+        {
+            baseSize = cameraa.orthographicSize;
             SwitchState(CameraMode.game);
+        }
         else
             SwitchState(CameraMode.garage);
+
+
+        // Physics
+        /*
+        if (rigidbody2d)
+            rigidbody2d.simulated = on;
+            */
     }
 
 
@@ -77,6 +156,10 @@ public class CameraMovements : MonoBehaviour
         if (rigidbody2d == null)
             if (GetComponent<Rigidbody2D>())
                 rigidbody2d = GetComponent<Rigidbody2D>();
+
+        if (cameraa == null)
+            if (GetComponent<Camera>())
+                cameraa = GetComponent<Camera>();
     }
 
 

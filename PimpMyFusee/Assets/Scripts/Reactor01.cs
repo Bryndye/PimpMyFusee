@@ -55,7 +55,6 @@ public class Reactor01 : MonoBehaviour
     public void TriggerReactor(bool state = false)
     {
         reactorActivated = state;
-        Debug.Log(state);
     }
 
 
