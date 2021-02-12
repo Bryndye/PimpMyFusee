@@ -24,7 +24,7 @@ public class CameraMovements : MonoBehaviour
 
 
 
-
+    
 
 
 
@@ -36,15 +36,15 @@ public class CameraMovements : MonoBehaviour
     }
 
 
-    public void StartCamera()
+
+    public void StartCamera(bool on = false)
     {
-        SwitchState(CameraMode.game);
+        if (on)
+            SwitchState(CameraMode.game);
+        else
+            SwitchState(CameraMode.garage);
     }
 
-    public void ResetCamera()
-    {
-        SwitchState(CameraMode.garage);
-    }
 
 
     /// <summary>

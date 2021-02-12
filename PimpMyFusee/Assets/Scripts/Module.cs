@@ -13,6 +13,7 @@ public class Module : MonoBehaviour
 
 
     bool activated = false;
+    [SerializeField] int cost = 20;
 
     [Header("SUB MODULES")]
     [SerializeField] Reactor01 reactor01 = null;
@@ -41,7 +42,14 @@ public class Module : MonoBehaviour
     {
         // When the module appears on screen it is not activated yet
         TriggerModule(false);
-        
+
+        // COST HERE
+    }
+
+
+    private void OnDestroy()                                                        // ON DESTROY
+    {
+        // UNDO COST HERE
     }
 
 
