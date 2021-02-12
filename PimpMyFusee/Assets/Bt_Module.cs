@@ -9,6 +9,8 @@ public class Bt_Module : MonoBehaviour
 
     [SerializeField] private GameObject prefabModule;
 
+    public int EspacePris;
+
     private Image icon;
     private Button bt;
     private Text text;
@@ -25,5 +27,17 @@ public class Bt_Module : MonoBehaviour
         //icon.sprite = Resources.Load<Sprite>("Sprite/"+prefabModule.name);
 
         bt.onClick.AddListener( delegate { ms.GetModule(prefabModule); });
+    }
+
+    private void Update()
+    {
+        if (ms.EspacePris + EspacePris <= ms.EspaceMax)
+        {
+            bt.interactable = true;
+        }
+        else
+        {
+            bt.interactable = false;
+        }
     }
 }
