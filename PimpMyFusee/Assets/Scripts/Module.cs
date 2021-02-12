@@ -13,7 +13,7 @@ public class Module : MonoBehaviour
 
 
     bool activated = false;
-    [SerializeField] int cost = 20;
+    [SerializeField] public int cost = 20;
 
     [Header("SUB MODULES")]
     [SerializeField] Reactor01 reactor01 = null;
@@ -44,16 +44,20 @@ public class Module : MonoBehaviour
         TriggerModule(false);
 
         // COST
+        /*
         if (ManagerShop.Instance != null)
             ManagerShop.Instance.AddEspace(cost);
+            */
     }
 
 
     private void OnDestroy()                                                        // ON DESTROY
     {
         // COST
+        /*
         if (ManagerShop.Instance != null)
             ManagerShop.Instance.AddEspace(-cost);
+            */
     }
 
 

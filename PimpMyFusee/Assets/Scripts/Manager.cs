@@ -15,7 +15,7 @@ public class Manager : MonoBehaviour
  
 
     [Tooltip("List of all the instanciated modules")]
-    [SerializeField] List<Module> modulesList = new List<Module>();
+    List<Module> modulesList = new List<Module>();
     [SerializeField] bool getAllModulesOnStart = false;
 
     bool simulationStarted = false;
