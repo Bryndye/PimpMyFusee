@@ -64,7 +64,7 @@ public class Module : MonoBehaviour
 
         // Sub modules
         if (reactor01 != null)
-            reactor01.TriggerReactor();
+            reactor01.TriggerReactor(true);
     }
 
 
