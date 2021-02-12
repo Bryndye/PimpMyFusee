@@ -6,6 +6,9 @@ public class ManagerShop : Singleton<ManagerShop>
 {
     [SerializeField] private GameObject moduleDrag;
 
+    public int EspacePris;
+    public int EspaceMax;
+
     private void Update()
     {
         if (moduleDrag != null)
@@ -44,5 +47,14 @@ public class ManagerShop : Singleton<ManagerShop>
     {
         //Debug.Log(prefab);
         moduleDrag = Instantiate(Resources.Load<GameObject>("Modules/"+prefab.name));
+    }
+
+    public void AddEspace(int esp)
+    {
+        EspacePris += esp;
+        if (EspacePris < 0)
+        {
+            EspacePris = 0;
+        }
     }
 }
