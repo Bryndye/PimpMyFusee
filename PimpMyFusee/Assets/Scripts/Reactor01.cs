@@ -28,7 +28,7 @@ public class Reactor01 : MonoBehaviour
         GetComponentsIfNotReferenced();
     }
 
-    void FixedUpdate()
+    void FixedUpdate()                                                              // FIXEDUPDATE
     {
         if (isActiveAndEnabled && enabled)
         {
