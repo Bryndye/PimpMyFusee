@@ -539,6 +539,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5160523700852511619, guid: baf93ea794f33b24aace9c17ae40f953, type: 3}
+      propertyPath: orthographic size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160523700852511621, guid: baf93ea794f33b24aace9c17ae40f953, type: 3}
+      propertyPath: maxOffset.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160523700852511621, guid: baf93ea794f33b24aace9c17ae40f953, type: 3}
+      propertyPath: moduleToFollow
+      value: 
+      objectReference: {fileID: 1146499543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baf93ea794f33b24aace9c17ae40f953, type: 3}
 --- !u!114 &453907897 stripped
@@ -1139,6 +1151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1146499543 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1388034418984917562, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
+  m_PrefabInstance: {fileID: 2023960120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1280658407 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 596703817, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
