@@ -41,7 +41,7 @@ public class Blaster01 : MonoBehaviour
                     Shoot();
         }
     }
-
+    
 
 
 
@@ -61,7 +61,7 @@ public class Blaster01 : MonoBehaviour
 
         if (projectilePrefab != null)
             lastShotProjectile = Instantiate(projectilePrefab, firePoint.position, transform.rotation).GetComponent<Projectile01>();
-
+        
         lastShotProjectile.moduleShooter = connectedModuleScript;
         lastShootStartTime = Time.time;
     }

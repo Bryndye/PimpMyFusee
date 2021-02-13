@@ -206,7 +206,7 @@ public class Module : MonoBehaviour
                 Connect(collision.gameObject.GetComponent<Module>());
         }
     }
-
+    
     private void Connect(Module moduleToConnectTo)
     {
         //transform.parent = moduleToConnectTo.transform;
