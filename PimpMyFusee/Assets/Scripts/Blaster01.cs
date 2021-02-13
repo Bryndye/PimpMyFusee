@@ -8,7 +8,10 @@ public class Blaster01 : MonoBehaviour
 {
     [Header("COMPONENTS")]
     [SerializeField] Transform firePoint = null;
+    [SerializeField] Module connectedModuleScript = null;
 
+
+    [SerializeField] GameObject projectilePrefab = null;
 
 
     [Header("SETTINGS")]
@@ -22,7 +25,7 @@ public class Blaster01 : MonoBehaviour
 
 
 
-
+    #region FUNCTIONS
     private void Awake()                                                                    // AWAKE
     {
         GetReferences();
@@ -34,8 +37,8 @@ public class Blaster01 : MonoBehaviour
         if (isActiveAndEnabled && enabled)
         {
             if (blasterActivated)
-            {
-            }
+                if (lastShootStartTime + fireRate < Time.time)
+                    Shoot();
         }
     }
 
@@ -48,7 +51,23 @@ public class Blaster01 : MonoBehaviour
     public void TriggerBlaster(bool on = false)
     {
         blasterActivated = on;
+        if (on)
+            Shoot();
     }
+
+    void Shoot()
+    {
+        Projectile01 lastShotProjectile = null;
+
+        if (projectilePrefab != null)
+            lastShotProjectile = Instantiate(projectilePrefab, firePoint.position, transform.rotation).GetComponent<Projectile01>();
+
+        lastShotProjectile.moduleShooter = connectedModuleScript;
+        lastShootStartTime = Time.time;
+    }
+
+
+
 
 
 
@@ -61,6 +80,10 @@ public class Blaster01 : MonoBehaviour
         if (firePoint == null)
             if (transform.GetChild(transform.childCount - 1) != null)
                 firePoint = transform.GetChild(transform.childCount - 1);
+
+        if (connectedModuleScript == null)
+            if (GetComponent<Module>())
+                connectedModuleScript = GetComponent<Module>();
     }
 
 
@@ -72,4 +95,5 @@ public class Blaster01 : MonoBehaviour
     {
         GetReferences();
     }
+    #endregion
 }

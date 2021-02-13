@@ -9,9 +9,13 @@ using UnityEngine;
 public class Module : MonoBehaviour
 {
     [Header("COMPONENTS")]
-    [SerializeField] Rigidbody2D rigidbody2d = null;
+    [SerializeField] public Rigidbody2D rigidbody2d = null;
     [SerializeField] Collider2D collider2d = null;
     FixedJoint2D fixedJoint = null;
+
+    [Header("DATA")]
+    [SerializeField] LayerMask defaultLayer = 0;
+    [SerializeField] LayerMask connectedLayer = 0;
 
 
     [Header("PARAMETERS")]
@@ -128,7 +132,7 @@ public class Module : MonoBehaviour
             mother01.TriggerMother(state);
 
 
-        rigidbody2d.velocity = baseVelocity;
+        rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.angularVelocity = 0;
 
         // Position
@@ -147,7 +151,9 @@ public class Module : MonoBehaviour
                 //fixedJoint = gameObject.AddComponent<FixedJoint2D>();
                 //fixedJoint.connectedBody = connectedModule.rigidbody2d;
                 //fixedJoint.breakForce = jointBreakForce;
-                Connect(connectedModule);
+                StartDrag(true);
+                StartDrag(false);
+                //Connect(connectedModule);
                 //fixedJoint.breakTorque = jointBreakForce;
             }
         }
@@ -162,8 +168,10 @@ public class Module : MonoBehaviour
     {
         collider2d.enabled = !on;
         rigidbody2d.isKinematic = !on;
-        rigidbody2d.velocity = baseVelocity;
+        rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.angularVelocity = 0;
+        if (on)
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, startRotation);
         //transform.parent = null;
         Destroy(fixedJoint);
         connectedModule = null;
@@ -174,6 +182,10 @@ public class Module : MonoBehaviour
         dragging = on;
 
         Invoke("EndDrag", 0.1f);
+
+
+        // COLLISION LAYER
+        //gameObject.layer = defaultLayer;
     }
 
     void EndDrag()
@@ -199,14 +211,21 @@ public class Module : MonoBehaviour
     {
         //transform.parent = moduleToConnectTo.transform;
         connected = true;
+        if (fixedJoint != null)
+            Destroy(fixedJoint);
         fixedJoint = gameObject.AddComponent<FixedJoint2D>();
         fixedJoint.connectedBody = moduleToConnectTo.rigidbody2d;
         fixedJoint.breakForce = jointBreakForce;
         fixedJoint.breakTorque = jointBreakForce;
         connectedModule = moduleToConnectTo;
-        rigidbody2d.velocity = baseVelocity;
+        rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.angularVelocity = 0;
+        rigidbody2d.isKinematic = true;
         //fixedJoint.enabled = true;
+
+        // COLLISION LAYER
+        //gameObject.layer = connectedLayer;
+        Debug.Log(connectedLayer);
     }
 
 
