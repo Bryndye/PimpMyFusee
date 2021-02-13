@@ -819,6 +819,7 @@ MonoBehaviour:
   playButton: {fileID: 1984849789}
   restartbutton: {fileID: 582212682}
   getAllModulesOnStart: 1
+  simulationStarted: 0
 --- !u!4 &971940651
 Transform:
   m_ObjectHideFlags: 0
@@ -1147,6 +1148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562df8bf8dcc36842acdc21afebc3402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody2d: {fileID: 1339559450}
+  speed: 5
 --- !u!70 &1339559453
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2054,6 +2057,78 @@ PrefabInstance:
     - target: {fileID: 6805249034216546805, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105203452186, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105203452186, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105203452186, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105203452186, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105203452186, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105203452186, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105287331107, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105287331107, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105287331107, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105287331107, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105287331107, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105287331107, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105689480850, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105689480850, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105689480850, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105689480850, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105689480850, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105689480850, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}

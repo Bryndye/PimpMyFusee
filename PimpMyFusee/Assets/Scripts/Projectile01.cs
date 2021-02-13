@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile01 : MonoBehaviour
 {
     [Header("COMPONENTS")]
+    [SerializeField] Module connectedModuleScript = null;
     [SerializeField] Rigidbody2D rigidbody2d = null;
 
 
@@ -21,7 +22,7 @@ public class Projectile01 : MonoBehaviour
     private void Start()                                                        // START
     {
         if (rigidbody2d != null)
-            rigidbody2d.velocity = transform.up * 
+            rigidbody2d.velocity = transform.up * speed;
     }
 
 
@@ -31,6 +32,10 @@ public class Projectile01 : MonoBehaviour
         if (rigidbody2d == null)
             if (GetComponent<Rigidbody2D>())
                 rigidbody2d = GetComponent<Rigidbody2D>();
+
+        if (connectedModuleScript == null)
+            if (GetComponent<Module>())
+                connectedModuleScript = GetComponent<Module>();
     }
 
 
