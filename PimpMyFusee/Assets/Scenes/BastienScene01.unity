@@ -793,7 +793,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.12941177}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.07058824}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6197,7 +6197,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.12941177}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.0627451}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -12158,6 +12158,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6805249032680526138, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6805249032680526277, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -12284,7 +12288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7231942105203452187, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
       propertyPath: m_Name
-      value: Button ParentModule01
+      value: Button ShieldModule
       objectReference: {fileID: 0}
     - target: {fileID: 7231942105287331106, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
       propertyPath: m_Name
@@ -12311,6 +12315,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7231942105287331107, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105330703025, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105330703025, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105330703025, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105330703025, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105330703025, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231942105330703025, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
