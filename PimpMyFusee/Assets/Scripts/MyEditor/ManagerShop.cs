@@ -16,16 +16,7 @@ public class ManagerShop : Singleton<ManagerShop>
         {
             Destroy(this);
         }
-        if (PlayerPrefs.HasKey("Gold"))
-        {
-            Gold = PlayerPrefs.GetInt("Gold");
-            Debug.Log("create key");
-        }
-        else
-        {
-            PlayerPrefs.SetInt("Gold", Gold);
-            Debug.Log("setup gold");
-        }
+        Save();
     }
 
     private void Update()
@@ -126,6 +117,8 @@ public class ManagerShop : Singleton<ManagerShop>
         Gold -= PriceUp;
         EspaceMax += 10;
         PriceUp += 100;
+        PlayerPrefs.SetInt("PriceUp", PriceUp);
+        PlayerPrefs.SetInt("EspaceMax", EspaceMax);
     }
     private void CheckMoney()
     {
@@ -157,4 +150,40 @@ public class ManagerShop : Singleton<ManagerShop>
         }
     }
     #endregion
+
+    private void Save()
+    {
+        if (PlayerPrefs.HasKey("Gold"))
+        {
+            Gold = PlayerPrefs.GetInt("Gold");
+            Debug.Log("setup gold");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Gold", Gold);
+            Debug.Log("create key");
+        }
+
+        if (PlayerPrefs.HasKey("PriceUp"))
+        {
+            PriceUp = PlayerPrefs.GetInt("PriceUp");
+            Debug.Log("setup PriceUp");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("PriceUp", PriceUp);
+            Debug.Log("create PriceUp");
+        }
+        
+        if (PlayerPrefs.HasKey("EspaceMax"))
+        {
+            EspaceMax = PlayerPrefs.GetInt("EspaceMax");
+            Debug.Log("setup EspaceMax");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("EspaceMax", EspaceMax);
+            Debug.Log("create EspaceMax");
+        }
+    }
 }

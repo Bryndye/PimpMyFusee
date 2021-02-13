@@ -22,6 +22,17 @@ public class ManagerScore : Singleton<ManagerScore>
         {
             Destroy(this);
         }
+        if (PlayerPrefs.HasKey("MeterMax"))
+        {
+            MeterMax = PlayerPrefs.GetInt("MeterMax");
+            Debug.Log("setup MeterMax");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("MeterMax", MeterMax);
+            Debug.Log("create key MeterMax");
+        }
+        scoreMax_t.text = MeterMax + " MAX";
         manager = GetComponent<Manager>();
         mShop = ManagerShop.Instance;
     }
@@ -44,6 +55,7 @@ public class ManagerScore : Singleton<ManagerScore>
         if (Meter > MeterMax)
         {
             MeterMax = Meter;
+            PlayerPrefs.SetInt("MeterMax", MeterMax);
         }
         mShop.Gold += Mathf.RoundToInt(Meter / 10);
         PlayerPrefs.SetInt("Gold",mShop.Gold);
