@@ -27,6 +27,8 @@ public class CameraMovements : MonoBehaviour
     [SerializeField] float cameraSpeedLerpSpeedMultiplier = 5f;
     [SerializeField] float upperSizeLimit = 20;
     [SerializeField] float upperSpeedLimit = 50;
+    [SerializeField] Vector3 maxOffset = new Vector3(0, 50, 0);
+    Vector3 currentOffset = new Vector3(0, 0, 0);
     float baseSize = 5;
     Vector3 basePosition = new Vector3(0, 0, -10);
 
@@ -59,6 +61,8 @@ public class CameraMovements : MonoBehaviour
                         CameraMovementsHandle(moduleToFollow.transform.position);
                     else
                         moduleToFollow = FindObjectOfType<Module>().gameObject;
+
+
                     // SIZE
                     float newSize = baseSize;
                     float speed = rigidbody2d.velocity.magnitude;
@@ -85,10 +89,30 @@ public class CameraMovements : MonoBehaviour
 
 
 
-    void CameraMovementsHandle(Vector3 positionToFollow)
+    void CameraMovementsHandle(Vector3 positionToFollow, float movementSPeed = 5f)
     {
-        Vector3 newCameraVelocity = new Vector3(positionToFollow.x - transform.position.x, positionToFollow.y - transform.position.y, 0) * speedMultiplier;
+        // OFFSET
+        Vector3 newOffset = new Vector3(0, 0, 0);
+
+
+        float speed = rigidbody2d.velocity.magnitude;
+        if (speed < 1)
+            newOffset = Vector3.zero;
+        else if (speed >= upperSpeedLimit)
+            newOffset = maxOffset;
+        else
+            newOffset = maxOffset * (speed / upperSpeedLimit);
+
+        currentOffset = Vector3.Lerp(currentOffset, newOffset, Time.deltaTime);
+
+
+
+        // MOVEMENTS
+        Vector3 newCameraVelocity = new Vector3((positionToFollow.x + currentOffset.x) - transform.position.x, (positionToFollow.y + currentOffset.y) - transform.position.y, 0) * speedMultiplier;
         rigidbody2d.velocity = Vector3.Lerp(rigidbody2d.velocity, newCameraVelocity, Time.fixedDeltaTime * cameraSpeedLerpSpeedMultiplier);
+
+        //Vector3 newPosition = Vector3.Lerp(transform.position, positionToFollow + currentOffset, Time.deltaTime * movementSPeed);
+        //transform.position = newPosition;
     }
 
 

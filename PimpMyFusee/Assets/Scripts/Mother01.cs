@@ -39,8 +39,6 @@ public class Mother01 : MonoBehaviour
 
                 if (rigidbody2d != null)
                     rigidbody2d.AddForce(newForce, ForceMode2D.Force);
-
-                Debug.Log(newForce);
             }
         }
     }

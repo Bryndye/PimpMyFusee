@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile01 : MonoBehaviour
 {
     [Header("COMPONENTS")]
-    [SerializeField] Module connectedModuleScript = null;
+    [SerializeField] public Module moduleShooter = null;
     [SerializeField] Rigidbody2D rigidbody2d = null;
 
 
@@ -21,10 +21,14 @@ public class Projectile01 : MonoBehaviour
 
     private void Start()                                                        // START
     {
-        if (rigidbody2d != null)
-            rigidbody2d.velocity = transform.up * speed;
+        Invoke("StartProjectile", 0.05f);
     }
 
+    void StartProjectile()
+    {
+        if (rigidbody2d != null && moduleShooter != null)
+            rigidbody2d.velocity = moduleShooter.rigidbody2d.velocity + rigidbody2d.velocity + (Vector2)transform.up * speed;
+    }
 
     // Get references if not set
     void GetReferences()
@@ -33,9 +37,9 @@ public class Projectile01 : MonoBehaviour
             if (GetComponent<Rigidbody2D>())
                 rigidbody2d = GetComponent<Rigidbody2D>();
 
-        if (connectedModuleScript == null)
+        if (moduleShooter == null)
             if (GetComponent<Module>())
-                connectedModuleScript = GetComponent<Module>();
+                moduleShooter = GetComponent<Module>();
     }
 
 

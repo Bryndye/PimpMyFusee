@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414713830}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EDITORINFOS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2035542712}
   - component: {fileID: 2035542714}
   - component: {fileID: 2035542713}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 686231499}
   - component: {fileID: 1257271428}
   - component: {fileID: 2437921371880958743}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ParentModule01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,10 +299,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 8019461466902291784}
   collider2d: {fileID: 8019461466902291785}
+  defaultLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  connectedLayer:
+    serializedVersion: 2
+    m_Bits: 256
   cost: 20
   jointBreakForce: 8000
   connectColor: {r: 1, g: 0.39719838, b: 0, a: 0.5882353}
+  mother01: {fileID: 0}
   reactor01: {fileID: 0}
+  blaster01: {fileID: 0}
   editorObjects: {fileID: 1414713829}
 --- !u!114 &686231499
 MonoBehaviour:
@@ -402,7 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8019461468124071863}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8019461468414399768}
   - component: {fileID: 8019461468414399771}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
