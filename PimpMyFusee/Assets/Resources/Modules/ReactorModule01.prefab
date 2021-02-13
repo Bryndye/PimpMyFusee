@@ -158,12 +158,40 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 686231502, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: cost
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 686231502, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: reactor01
       value: 
       objectReference: {fileID: 6029938151694706289}
+    - target: {fileID: 1257271428, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257271428, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257271428, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257271428, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257271428, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257271428, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257271428, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2035542713, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_text
       value: Reactor module
@@ -246,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291791, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_Name
-      value: ReactorModule01 (1)
+      value: ReactorModule01
       objectReference: {fileID: 0}
     - target: {fileID: 8019461468414399771, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_Color.g

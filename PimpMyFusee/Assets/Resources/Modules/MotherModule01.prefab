@@ -4821,7 +4821,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 686231502, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: cost
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2035542713, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_text
