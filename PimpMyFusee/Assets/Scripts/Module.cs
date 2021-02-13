@@ -154,6 +154,10 @@ public class Module : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, startRotation);
             transform.position = startPosition;
+            if (anim && reactor01 != null)
+            {
+                anim.SetTrigger("On/Off");
+            }
 
             if (connected)
             {
