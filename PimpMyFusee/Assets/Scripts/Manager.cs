@@ -15,6 +15,7 @@ public class Manager : MonoBehaviour
     [SerializeField] CameraMovements cameraScript = null;
     [SerializeField] GameObject playButton = null;
     [SerializeField] GameObject restartbutton = null;
+    [SerializeField] List<GameObject> editorObjects = new List<GameObject>();
 
 
     List<Module> modulesList = new List<Module>();
@@ -38,13 +39,27 @@ public class Manager : MonoBehaviour
 
         // Set up display
         restartbutton.SetActive(false);
+        EnableEditorUI(true);
     }
 
 
 
+
+    void EnableEditorUI(bool on = false)
+    {
+        if (editorObjects != null && editorObjects.Count > 0)
+            for (int i = 0; i < editorObjects.Count; i++)
+                editorObjects[i].SetActive(on);
+    }
+
+
+    
+
     // STARTS THE GAME
     public void StartSimulation(bool on = false)
     {
+        EnableEditorUI(!on);
+
         simulationStarted = on;
 
         //Put Score Into Manager

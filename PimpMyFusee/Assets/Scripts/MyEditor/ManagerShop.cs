@@ -10,16 +10,19 @@ public class ManagerShop : Singleton<ManagerShop>
     [SerializeField] private GameObject moduleInstance;
     [SerializeField] private Transform helpPlayer;
 
-    private void Awake()
+    private void Awake()                                                            // AWAKE
     {
         if (Instance != this)
-        {
             Destroy(this);
-        }
         Save();
     }
 
-    private void Update()
+    private void Start()
+    {
+        CreateButtons();
+    }
+
+    private void Update()                                                       // UPDATE
     {
         if (helpPlayer != null)
         {
@@ -65,7 +68,6 @@ public class ManagerShop : Singleton<ManagerShop>
 
         if (hit.collider != null)
         {
-            Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 if (hit.collider.gameObject.GetComponent<Module>())
@@ -83,25 +85,48 @@ public class ManagerShop : Singleton<ManagerShop>
                     Destroy(hit.collider.gameObject);
                 }
             }
-
         }
-
     }
 
     private void MoveTarget()
     {
         //moduleInstance.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //moduleInstance.transform.position = new Vector3(moduleInstance.transform.position.x, moduleInstance.transform.position.y, 0);
-        Debug.Log("jtm jules");
         moduleInstance.GetComponent<Rigidbody2D>().MovePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
     #endregion
-
+    
     public void InstantiateModule(GameObject prefab)
     {
         Instantiate(Resources.Load<GameObject>("Modules/"+prefab.name));
         //l.transform.position = new Vector3(0,3,0);
     }
+
+    [Header("MODULES BUTTONS")]
+    [SerializeField] Transform buttonsParent = null;
+    [SerializeField] GameObject buttonPrefab = null;
+    [SerializeField] ModulesData modulesData = null;
+    List<GameObject> buttonsList = new List<GameObject>();
+
+
+    public void CreateButtons()
+    {
+        if (modulesData != null && modulesData.modulesList.Count > 0)
+            for (int i = 0; i < modulesData.modulesList.Count; i++)
+            {
+                buttonsList.Add(Instantiate(buttonPrefab, buttonsParent));
+                Bt_Module buttonScript = buttonsList[i].GetComponent<Bt_Module>();
+
+                buttonScript.prefabModule = modulesData.modulesList[i].prefab;
+                buttonScript.coutModule_t.text = modulesData.modulesList[i].prefab.GetComponent<Module>().cost.ToString();
+                buttonScript.moduleIcon.sprite = modulesData.modulesList[i].icon;
+                buttonScript.SetUpButton();
+            }
+    }
+
+
+
+
 
     #region Gestion Eco
     [Header("Espace")]

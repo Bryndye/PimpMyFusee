@@ -13,9 +13,10 @@ public class Bt_Module : MonoBehaviour
 
     private Image icon;
     private Button bt;
+    [SerializeField] public Image moduleIcon = null;
     [SerializeField] private Text nomModuel_t;
-    [SerializeField] private Text coutModule_t;
-    private void Awake()
+    [SerializeField] public Text coutModule_t;
+    private void Awake()                                                                    // AWAKE
     {
         ms = ManagerShop.Instance;
 
@@ -29,10 +30,15 @@ public class Bt_Module : MonoBehaviour
         nomModuel_t.text = prefabModule.name;
         //icon.sprite = Resources.Load<Sprite>("Icon/"+prefabModule.name);
 
-        bt.onClick.AddListener( delegate { ms.InstantiateModule(prefabModule); });
+        //bt.onClick.AddListener( delegate { ms.InstantiateModule(prefabModule); });
     }
 
-    private void Update()
+    public void SetUpButton()
+    {
+        bt.onClick.AddListener(delegate { ms.InstantiateModule(prefabModule); });
+    }
+
+    private void Update()                                                                       // UPDATE
     {
         if (ms.EspacePris + EspacePris <= ms.EspaceMax)
         {
@@ -44,7 +50,7 @@ public class Bt_Module : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos()                                                                                 // ON DRAW GIZMOS
     {
         if (prefabModule != null)
         {
