@@ -128,6 +128,8 @@ public class Module : MonoBehaviour
             mother01.TriggerMother(state);
 
 
+        rigidbody2d.velocity = baseVelocity;
+        rigidbody2d.angularVelocity = 0;
 
         // Position
         if (state)
@@ -139,8 +141,6 @@ public class Module : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, startRotation);
             transform.position = startPosition;
-            rigidbody2d.velocity = baseVelocity;
-            rigidbody2d.angularVelocity = 0;
 
             if (connected)
             {
@@ -163,6 +163,7 @@ public class Module : MonoBehaviour
         collider2d.enabled = !on;
         rigidbody2d.isKinematic = !on;
         rigidbody2d.velocity = baseVelocity;
+        rigidbody2d.angularVelocity = 0;
         //transform.parent = null;
         Destroy(fixedJoint);
         connectedModule = null;
