@@ -58,8 +58,8 @@ public class CameraMovements : MonoBehaviour
                     // Movements
                     if (moduleToFollow != null)
                         CameraMovementsHandle(moduleToFollow.transform.position);
-
-
+                    else
+                        moduleToFollow = FindObjectOfType<Module>().gameObject;
                     // SIZE
                     float newSize = baseSize;
                     float speed = rigidbody2d.velocity.magnitude;
@@ -69,15 +69,14 @@ public class CameraMovements : MonoBehaviour
                         newSize = upperSizeLimit;
                     else
                         newSize = baseSize + (upperSizeLimit - baseSize) * (speed / upperSpeedLimit);
-
-
                     cameraa.orthographicSize = Mathf.Lerp(cameraa.orthographicSize, newSize, Time.deltaTime);
                     break;
+
+
+
                 case CameraMode.garage:
                     // Movements
                     CameraMovementsHandle(basePosition);
-
-
                     cameraa.orthographicSize = Mathf.Lerp(cameraa.orthographicSize, baseSize, Time.deltaTime * 10);
                     break;
             }

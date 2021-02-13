@@ -40,6 +40,7 @@ public class Module : MonoBehaviour
 
     [Header("SUB MODULES")]
     [SerializeField] Reactor01 reactor01 = null;
+    [SerializeField] Blaster01 blaster01 = null;
 
 
 
@@ -116,9 +117,12 @@ public class Module : MonoBehaviour
         activated = state;
         rigidbody2d.isKinematic = !state;
 
+
         // Sub modules
         if (reactor01 != null)
             reactor01.TriggerReactor(state);
+        if (blaster01 != null)
+            blaster01.TriggerBlaster(state);
 
 
 
@@ -177,15 +181,11 @@ public class Module : MonoBehaviour
     {
         if (dragging)
             if (collision.gameObject.GetComponent<Module>())
-            {
                 collision.gameObject.GetComponent<Module>().EnableConnectGraphics(true);
-                Debug.Log("Connect");
-            }
 
         if (endDrag)
         {
             endDrag = false;
-
             if (collision.gameObject.GetComponent<Module>())
                 Connect(collision.gameObject.GetComponent<Module>());
         }
@@ -200,6 +200,8 @@ public class Module : MonoBehaviour
         fixedJoint.breakForce = jointBreakForce;
         fixedJoint.breakTorque = jointBreakForce;
         connectedModule = moduleToConnectTo;
+        rigidbody2d.velocity = baseVelocity;
+        rigidbody2d.angularVelocity = 0;
         //fixedJoint.enabled = true;
     }
 
