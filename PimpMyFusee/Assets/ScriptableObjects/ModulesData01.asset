@@ -25,3 +25,6 @@ MonoBehaviour:
   - name: Shield
     prefab: {fileID: 6622653663048388623, guid: fad7c7dd335a55441825741fd6006988, type: 3}
     icon: {fileID: 21300000, guid: 0ec337323059a5a448c1566d698092d1, type: 3}
+  - name: Control
+    prefab: {fileID: 8019461466902291791, guid: 8ccb432fb1ef89047977bc062cb3c11b, type: 3}
+    icon: {fileID: 21300000, guid: bcc3a6807f4bdc1429096fcfcfa3b20f, type: 3}

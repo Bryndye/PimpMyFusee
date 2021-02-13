@@ -46,6 +46,7 @@ public class Module : MonoBehaviour
     [SerializeField] Mother01 mother01 = null;
     [SerializeField] Reactor01 reactor01 = null;
     [SerializeField] Blaster01 blaster01 = null;
+    [SerializeField] Control01 control01 = null;
 
 
 
@@ -132,6 +133,8 @@ public class Module : MonoBehaviour
             blaster01.TriggerBlaster(state);
         if (mother01 != null)
             mother01.TriggerMother(state);
+        if (control01 != null)
+            control01.TriggerControl(state);
 
 
         rigidbody2d.velocity = Vector3.zero;
