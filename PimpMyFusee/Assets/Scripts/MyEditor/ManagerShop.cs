@@ -45,6 +45,7 @@ public class ManagerShop : Singleton<ManagerShop>
             }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                moduleInstance.GetComponent<Module>().StartDrag(false);
                 moduleInstance = null;
             }
             if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -65,7 +66,12 @@ public class ManagerShop : Singleton<ManagerShop>
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
             {
-                moduleInstance = hit.collider.gameObject;
+                if (hit.collider.gameObject.GetComponent<Module>())
+                {
+                    moduleInstance = hit.collider.gameObject;
+                    Module moduleScript = moduleInstance.GetComponent<Module>();
+                    moduleScript.StartDrag(true);
+                }
                 //Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
             }
         }
