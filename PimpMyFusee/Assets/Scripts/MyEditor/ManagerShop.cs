@@ -162,39 +162,51 @@ public class ManagerShop : Singleton<ManagerShop>
     }
     #endregion
 
+    #region PlayerPrefs
     private void Save()
     {
         if (PlayerPrefs.HasKey("Gold"))
         {
             Gold = PlayerPrefs.GetInt("Gold");
-            Debug.Log("setup gold");
+            //Debug.Log("setup gold");
         }
         else
         {
             PlayerPrefs.SetInt("Gold", Gold);
-            Debug.Log("create key");
+            //Debug.Log("create key");
         }
 
         if (PlayerPrefs.HasKey("PriceUp"))
         {
             PriceUp = PlayerPrefs.GetInt("PriceUp");
-            Debug.Log("setup PriceUp");
+            //Debug.Log("setup PriceUp");
         }
         else
         {
             PlayerPrefs.SetInt("PriceUp", PriceUp);
-            Debug.Log("create PriceUp");
+            //Debug.Log("create PriceUp");
         }
         
         if (PlayerPrefs.HasKey("EspaceMax"))
         {
             EspaceMax = PlayerPrefs.GetInt("EspaceMax");
-            Debug.Log("setup EspaceMax");
+            //Debug.Log("setup EspaceMax");
         }
         else
         {
             PlayerPrefs.SetInt("EspaceMax", EspaceMax);
-            Debug.Log("create EspaceMax");
+            //Debug.Log("create EspaceMax");
         }
     }
+
+    public void ResetSave()
+    {
+        PlayerPrefs.SetInt("EspaceMax", 100);
+        PlayerPrefs.SetInt("PriceUp", 100);
+        PlayerPrefs.SetInt("Gold", 100);
+        PlayerPrefs.SetInt("MeterMax", 0);
+        Application.Quit();
+    }
+
+    #endregion
 }
