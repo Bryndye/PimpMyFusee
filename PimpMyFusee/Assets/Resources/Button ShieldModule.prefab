@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -139.5}
-  m_SizeDelta: {x: 0, y: -282.0409}
+  m_AnchoredPosition: {x: 0, y: -173.1}
+  m_SizeDelta: {x: 0, y: -349.30942}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1206441691
 CanvasRenderer:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.08365347, g: 0.7075472, b: 0.0033374948, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -66,8 +66,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 150
+    m_Font: {fileID: 12800000, guid: b71a2f056d69c2a43a95c13bab28160f, type: 3}
+    m_FontSize: 200
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 7231942104604989701}
   - component: {fileID: 7231942104604989702}
   m_Layer: 5
-  m_Name: Button MotherModule01
+  m_Name: Button ShieldModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036d232c4249be147b4a35aaede5d0ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabModule: {fileID: 3923809208072816944, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
+  prefabModule: {fileID: 6622653663048388623, guid: fad7c7dd335a55441825741fd6006988, type: 3}
   EspacePris: 0
   nomModuel_t: {fileID: 7231942106080688250}
   coutModule_t: {fileID: 1206441690}
@@ -283,8 +283,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_Font: {fileID: 12800000, guid: b71a2f056d69c2a43a95c13bab28160f, type: 3}
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
