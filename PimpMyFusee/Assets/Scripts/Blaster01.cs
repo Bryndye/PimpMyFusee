@@ -20,7 +20,7 @@ public class Blaster01 : MonoBehaviour
     float lastShootStartTime = 0;
 
 
-
+    private Animator anim;
 
 
 
@@ -51,19 +51,29 @@ public class Blaster01 : MonoBehaviour
     public void TriggerBlaster(bool on = false)
     {
         blasterActivated = on;
-        if (on)
-            Shoot();
+        if (on)
+        {
+            Shoot();
+        }
     }
 
     void Shoot()
     {
         Projectile01 lastShotProjectile = null;
 
-        if (projectilePrefab != null)
+        if (projectilePrefab != null)
+        {
             lastShotProjectile = Instantiate(projectilePrefab, firePoint.position, transform.rotation).GetComponent<Projectile01>();
-        
+            Destroy(lastShotProjectile.gameObject, 5f);
+        }
+
         lastShotProjectile.moduleShooter = connectedModuleScript;
-        lastShootStartTime = Time.time;
+        lastShootStartTime = Time.time;
+
+        if (anim != null)
+        {
+            anim.SetTrigger("Shoot");
+        }
     }
 
 
@@ -76,7 +86,9 @@ public class Blaster01 : MonoBehaviour
 
     // Get references if not here
     void GetReferences()
-    {
+    {
+        anim = GetComponentInChildren<Animator>();
+
         if (firePoint == null)
             if (transform.GetChild(transform.childCount - 1) != null)
                 firePoint = transform.GetChild(transform.childCount - 1);

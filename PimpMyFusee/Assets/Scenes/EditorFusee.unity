@@ -1083,6 +1083,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1388034418984917563, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388034418984917563, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3923809208072816944, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
       propertyPath: m_Name
       value: MotherModule01

@@ -52,10 +52,6 @@ public class ManagerShop : Singleton<ManagerShop>
                 moduleInstance.GetComponent<Module>().StartDrag(false);
                 moduleInstance = null;
             }
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-
-            }
         }
         else
         {
@@ -69,6 +65,7 @@ public class ManagerShop : Singleton<ManagerShop>
 
         if (hit.collider != null)
         {
+            Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 if (hit.collider.gameObject.GetComponent<Module>())
@@ -80,7 +77,6 @@ public class ManagerShop : Singleton<ManagerShop>
             }
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                //Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
                 Mother01 mom = hit.collider.GetComponent<Mother01>();
                 if (mom == null)
                 {
@@ -96,16 +92,15 @@ public class ManagerShop : Singleton<ManagerShop>
     {
         //moduleInstance.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //moduleInstance.transform.position = new Vector3(moduleInstance.transform.position.x, moduleInstance.transform.position.y, 0);
-
+        Debug.Log("jtm jules");
         moduleInstance.GetComponent<Rigidbody2D>().MovePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        //moduleInstance.transform.position = new Vector3(moduleInstance.transform.position.x, moduleInstance.transform.position.y, 0);
     }
     #endregion
 
     public void InstantiateModule(GameObject prefab)
     {
-        //Debug.Log(prefab);
-        moduleInstance = Instantiate(Resources.Load<GameObject>("Modules/"+prefab.name));
+        Instantiate(Resources.Load<GameObject>("Modules/"+prefab.name));
+        //l.transform.position = new Vector3(0,3,0);
     }
 
     #region Gestion Eco

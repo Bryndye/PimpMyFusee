@@ -54,7 +54,8 @@ public class Module : MonoBehaviour
     [SerializeField] GameObject editorObjects = null;
 
 
-
+    [Header("Animator")]
+    private Animator anim;
 
 
 
@@ -67,6 +68,7 @@ public class Module : MonoBehaviour
         GetComponentsIfNotReferenced();
         DisableEditorInfo();
 
+        anim = GetComponentInChildren<Animator>();
 
         // Get base values
         startPosition = transform.position;
@@ -140,6 +142,10 @@ public class Module : MonoBehaviour
         {
             startRotation = transform.eulerAngles.z;
             startPosition = transform.position;
+            if (anim && reactor01 != null)
+            {
+                anim.SetTrigger("On/Off");
+            }
         } 
         else
         {
