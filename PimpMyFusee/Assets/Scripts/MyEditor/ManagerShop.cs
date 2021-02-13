@@ -65,6 +65,7 @@ public class ManagerShop : Singleton<ManagerShop>
 
         if (hit.collider != null)
         {
+            Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 if (hit.collider.gameObject.GetComponent<Module>())
@@ -76,7 +77,6 @@ public class ManagerShop : Singleton<ManagerShop>
             }
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                //Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
                 Mother01 mom = hit.collider.GetComponent<Mother01>();
                 if (mom == null)
                 {
@@ -99,8 +99,8 @@ public class ManagerShop : Singleton<ManagerShop>
 
     public void InstantiateModule(GameObject prefab)
     {
-        var l = Instantiate(Resources.Load<GameObject>("Modules/"+prefab.name));
-        l.transform.position = new Vector3(0,3,0);
+        Instantiate(Resources.Load<GameObject>("Modules/"+prefab.name));
+        //l.transform.position = new Vector3(0,3,0);
     }
 
     #region Gestion Eco
