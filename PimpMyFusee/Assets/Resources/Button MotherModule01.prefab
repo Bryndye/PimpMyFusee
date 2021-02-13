@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -69}
-  m_SizeDelta: {x: 0, y: -140.98438}
+  m_AnchoredPosition: {x: 0, y: -139.5}
+  m_SizeDelta: {x: 0, y: -282.0409}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1206441691
 CanvasRenderer:
@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 150
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036d232c4249be147b4a35aaede5d0ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabModule: {fileID: 8019461466902291791, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+  prefabModule: {fileID: 3923809208072816944, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
   EspacePris: 0
   nomModuel_t: {fileID: 7231942106080688250}
   coutModule_t: {fileID: 1206441690}
@@ -251,8 +251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 70.5}
-  m_SizeDelta: {x: 0, y: -140.98438}
+  m_AnchoredPosition: {x: 0, y: 95.8}
+  m_SizeDelta: {x: 0, y: -191.62003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7231942106080688245
 CanvasRenderer:

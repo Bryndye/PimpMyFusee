@@ -7,9 +7,16 @@ using UnityEngine.UI;
 
 public class ManagerShop : Singleton<ManagerShop>
 {
-    [SerializeField] private GameObject moduleDrag;
+    [SerializeField] private GameObject moduleInstance;
     [SerializeField] private Transform helpPlayer;
 
+    private void Awake()
+    {
+        if (Instance != this)
+        {
+            Destroy(this);
+        }
+    }
 
     private void Update()
     {
@@ -19,21 +26,30 @@ public class ManagerShop : Singleton<ManagerShop>
         }
         ModuleDrag();
         UpdateScore();
+        CheckMoney();
     }
 
     #region ModuleInWorld
     private void ModuleDrag()
     {
-        if (moduleDrag != null)
+        if (moduleInstance != null)
         {
             MoveTarget();
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
             {
-                moduleDrag.transform.Rotate(new Vector3(moduleDrag.transform.localEulerAngles.x, moduleDrag.transform.localEulerAngles.y, 45));
+                moduleInstance.transform.Rotate(new Vector3(moduleInstance.transform.localEulerAngles.x, moduleInstance.transform.localEulerAngles.y, 45));
+            }
+            if (Input.GetAxisRaw("Mouse ScrollWheel") < 0)
+            {
+                moduleInstance.transform.Rotate(new Vector3(moduleInstance.transform.localEulerAngles.x, moduleInstance.transform.localEulerAngles.y, -45));
             }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                moduleDrag = null;
+                moduleInstance = null;
+            }
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                Destroy(moduleInstance);
             }
         }
         else
@@ -49,7 +65,7 @@ public class ManagerShop : Singleton<ManagerShop>
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
             {
-                moduleDrag = hit.collider.gameObject;
+                moduleInstance = hit.collider.gameObject;
                 //Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
             }
         }
@@ -57,15 +73,15 @@ public class ManagerShop : Singleton<ManagerShop>
 
     private void MoveTarget()
     {
-        moduleDrag.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        moduleDrag.transform.position = new Vector3(moduleDrag.transform.position.x, moduleDrag.transform.position.y, 0);
+        moduleInstance.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        moduleInstance.transform.position = new Vector3(moduleInstance.transform.position.x, moduleInstance.transform.position.y, 0);
     }
     #endregion
 
     public void InstantiateModule(GameObject prefab)
     {
         //Debug.Log(prefab);
-        moduleDrag = Instantiate(Resources.Load<GameObject>("Modules/"+prefab.name));
+        moduleInstance = Instantiate(Resources.Load<GameObject>("Modules/"+prefab.name));
     }
 
     #region Gestion Eco
@@ -84,12 +100,29 @@ public class ManagerShop : Singleton<ManagerShop>
 
     [Header("tune")]
     public int Gold;
-
+    public int PriceUp = 100;
+    [SerializeField] private Button bt_up;
     public void AddEspaceMax()
     {
+        Gold -= PriceUp;
         EspaceMax += 10;
+        PriceUp += 100;
     }
-
+    private void CheckMoney()
+    {
+        if (bt_up != null)
+        {
+            bt_up.GetComponentInChildren<TextMeshProUGUI>().text = PriceUp.ToString();
+            if (Gold >= PriceUp)
+            {
+                bt_up.interactable = true;
+            }
+            else
+            {
+                bt_up.interactable = false;
+            }
+        }
+    }
     #endregion
 
     #region UI
