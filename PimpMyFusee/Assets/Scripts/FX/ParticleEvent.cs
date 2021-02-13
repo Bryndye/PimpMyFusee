@@ -18,4 +18,10 @@ public class ParticleEvent : MonoBehaviour
         if (!myParticleSystem.isPlaying)
             myParticleSystem.Play();
     }
+
+    public void CheckStop()
+    {
+        if (myParticleSystem.isPlaying)
+            myParticleSystem.Stop();
+    }
 }
