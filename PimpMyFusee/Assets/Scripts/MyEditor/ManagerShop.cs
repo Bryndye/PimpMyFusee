@@ -25,7 +25,10 @@ public class ManagerShop : Singleton<ManagerShop>
         {
             helpPlayer.position = Input.mousePosition;
         }
-        ModuleDrag();
+        if (!Manager.Instance.simulationStarted)
+        {
+            ModuleDrag();
+        }
         UpdateScore();
         CheckMoney();
     }

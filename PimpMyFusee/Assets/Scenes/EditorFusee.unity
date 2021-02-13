@@ -751,6 +751,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!4 &1605598799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1388034418984917563, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
+  m_PrefabInstance: {fileID: 2023960120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1651581815 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1651581815, guid: ce63836cd76eeef4490a8e7822dd5137, type: 3}
@@ -966,6 +971,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 99996638, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388034418984917563, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3923809208072816944, guid: 41a5a79d1576b19419f7515e4b11c609, type: 3}
       propertyPath: m_Name
       value: MotherModule01
@@ -1121,6 +1134,6 @@ PrefabInstance:
     - target: {fileID: 8092780515020225988, guid: e44ee18fb5c101d45a36adee83bfd72f, type: 3}
       propertyPath: motherModule
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1605598799}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44ee18fb5c101d45a36adee83bfd72f, type: 3}
