@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour
 {
     // SINGLETON
     [HideInInspector] public static Manager Instance = null;
-
+    private ManagerScore ms;
 
     [SerializeField] CameraMovements cameraScript = null;
     [SerializeField] GameObject playButton = null;
@@ -20,7 +20,7 @@ public class Manager : MonoBehaviour
     List<Module> modulesList = new List<Module>();
     [SerializeField] bool getAllModulesOnStart = false;
 
-    bool simulationStarted = false;
+    public bool simulationStarted = false;
 
 
 
@@ -34,6 +34,7 @@ public class Manager : MonoBehaviour
         Instance = this;
         GetReferences();
 
+        ms = ManagerScore.Instance;
 
         // Set up display
         restartbutton.SetActive(false);
@@ -44,6 +45,12 @@ public class Manager : MonoBehaviour
     // STARTS THE GAME
     public void StartSimulation(bool on = false)
     {
+        simulationStarted = on;
+
+        //Put Score Into Manager
+        if (!on)
+            ms.GetTheScore();
+
         // Find modules in scene
         if (getAllModulesOnStart)
         {
