@@ -19,10 +19,12 @@ public class ManagerShop : Singleton<ManagerShop>
         if (PlayerPrefs.HasKey("Gold"))
         {
             Gold = PlayerPrefs.GetInt("Gold");
+            Debug.Log("create key");
         }
         else
         {
             PlayerPrefs.SetInt("Gold", Gold);
+            Debug.Log("setup gold");
         }
     }
 
