@@ -79,8 +79,11 @@ public class ManagerShop : Singleton<ManagerShop>
 
     private void MoveTarget()
     {
-        moduleInstance.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        moduleInstance.transform.position = new Vector3(moduleInstance.transform.position.x, moduleInstance.transform.position.y, 0);
+        //moduleInstance.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //moduleInstance.transform.position = new Vector3(moduleInstance.transform.position.x, moduleInstance.transform.position.y, 0);
+
+        moduleInstance.GetComponent<Rigidbody2D>().MovePosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        //moduleInstance.transform.position = new Vector3(moduleInstance.transform.position.x, moduleInstance.transform.position.y, 0);
     }
     #endregion
 
