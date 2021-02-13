@@ -46,7 +46,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.39609292, g: 0.547636, b: 0.6509434, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.10754716, b: 0.1792453, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   cameraSpeedLerpSpeedMultiplier: 10
   upperSizeLimit: 20
   upperSpeedLimit: 50
+  maxOffset: {x: 0, y: 50, z: 0}
 --- !u!50 &5160523700852511620
 Rigidbody2D:
   serializedVersion: 4
