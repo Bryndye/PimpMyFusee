@@ -11,7 +11,7 @@ public class Module : MonoBehaviour
     [Header("COMPONENTS")]
     [SerializeField] Rigidbody2D rigidbody2d = null;
     [SerializeField] Collider2D collider2d = null;
-    [SerializeField] FixedJoint2D fixedJoint = null;
+    FixedJoint2D fixedJoint = null;
 
 
     [Header("PARAMETERS")]
@@ -25,6 +25,17 @@ public class Module : MonoBehaviour
     bool dragging = false;
     bool endDrag = false;
     bool connected = false;
+
+
+    bool connectedGraphicsEnabled = false;
+    float connectedGraphicsEnableStartTime = 0f;
+
+
+    [Header("GRAPHICS")]
+    [SerializeField] Color connectColor = Color.red;
+    SpriteRenderer[] spriteRenderers = null;
+    List<Color> spriteRenderersBaseColors = new List<Color>();
+
 
 
     [Header("SUB MODULES")]
@@ -64,6 +75,10 @@ public class Module : MonoBehaviour
         // COST
         if (ManagerShop.Instance != null)
             ManagerShop.Instance.AddEspace(cost);
+
+
+        // GRAPHICS
+        GetSpriteRenderers();
     }
 
 
@@ -73,6 +88,16 @@ public class Module : MonoBehaviour
         if (ManagerShop.Instance != null)
             ManagerShop.Instance.AddEspace(-cost);
     }
+
+
+    private void Update()                                                                                   // UPDATE
+    {
+        if (enabled && isActiveAndEnabled)
+            if (connectedGraphicsEnabled && connectedGraphicsEnableStartTime + 0.05f < Time.time)
+                EnableConnectGraphics(false);
+    }
+
+
 
 
 
@@ -112,10 +137,11 @@ public class Module : MonoBehaviour
 
             if (connected)
             {
-                fixedJoint = gameObject.AddComponent<FixedJoint2D>();
-                fixedJoint.connectedBody = connectedModule.rigidbody2d;
-                fixedJoint.breakForce = jointBreakForce;
-                fixedJoint.breakTorque = jointBreakForce;
+                //fixedJoint = gameObject.AddComponent<FixedJoint2D>();
+                //fixedJoint.connectedBody = connectedModule.rigidbody2d;
+                //fixedJoint.breakForce = jointBreakForce;
+                Connect(connectedModule);
+                //fixedJoint.breakTorque = jointBreakForce;
             }
         }
     }
@@ -147,11 +173,14 @@ public class Module : MonoBehaviour
         endDrag = false;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)                                                          // ON TRIGGER STAY 2D
     {
         if (dragging)
             if (collision.gameObject.GetComponent<Module>())
-                Debug.Log(collision.gameObject);
+            {
+                collision.gameObject.GetComponent<Module>().EnableConnectGraphics(true);
+                Debug.Log("Connect");
+            }
 
         if (endDrag)
         {
@@ -172,6 +201,48 @@ public class Module : MonoBehaviour
         fixedJoint.breakTorque = jointBreakForce;
         connectedModule = moduleToConnectTo;
         //fixedJoint.enabled = true;
+    }
+
+
+
+
+
+
+
+
+    // GRAPHICS
+    public void EnableConnectGraphics(bool on = false)
+    {
+        if (on)
+        {
+            if (spriteRenderers != null && spriteRenderers.Length > 0)
+                for (int i = 0; i < spriteRenderers.Length; i++)
+                    spriteRenderers[i].color = connectColor;
+
+            connectedGraphicsEnabled = true;
+            connectedGraphicsEnableStartTime = Time.time;
+        }
+        else
+        {
+            if (connectedGraphicsEnabled)
+            {
+                if (spriteRenderers != null && spriteRenderers.Length > 0)
+                    for (int i = 0; i < spriteRenderers.Length; i++)
+                        spriteRenderers[i].color = spriteRenderersBaseColors[i];
+
+                connectedGraphicsEnabled = false;
+            }
+        }
+    }
+
+
+    // Store sprite renderers references and their colors on start
+    void GetSpriteRenderers()
+    {
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        for (int i = 0; i < spriteRenderers.Length; i++)
+            spriteRenderersBaseColors.Add(spriteRenderers[i].color);
     }
 
 
