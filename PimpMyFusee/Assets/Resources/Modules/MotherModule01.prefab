@@ -9802,7 +9802,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedModuleScript: {fileID: 6430843504130630577}
   rigidbody2d: {fileID: 3923809208072816951}
-  controlForce: 500
+  controlForce: 10
+--- !u!95 &6676657217865101370
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3923809206367910246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 29ca0e73e7a9759449a1e29fd3443147, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6430843504522603647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9852,7 +9871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9890,6 +9909,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MotherModule01
       objectReference: {fileID: 0}
+    - target: {fileID: 8019461468414399769, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_Name
+      value: Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019461468414399771, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5123593177062302340, guid: e11a7e525882f274f8088eadc8532d2b, type: 3}
     - target: {fileID: 8019461468414399771, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -9926,8 +9953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adeeba9b3ed15a645a3c4ea8426e924c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3923809206037474248 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8019461468124071863, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+--- !u!1 &3923809206367910246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8019461468414399769, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
   m_PrefabInstance: {fileID: 6430843504522603647}
   m_PrefabAsset: {fileID: 0}
