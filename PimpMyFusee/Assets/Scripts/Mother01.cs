@@ -14,7 +14,6 @@ public class Mother01 : MonoBehaviour
 
     [Header("PARAMETERS")]
     [SerializeField] float controlForce = 10f;
-    [SerializeField] Vector2 horizontalNoiseLimits = new Vector2(-10f, 10f);
     bool motherActivated = false;
 
 
@@ -40,6 +39,8 @@ public class Mother01 : MonoBehaviour
 
                 if (rigidbody2d != null)
                     rigidbody2d.AddForce(newForce, ForceMode2D.Force);
+
+                Debug.Log(newForce);
             }
         }
     }

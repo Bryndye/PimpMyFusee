@@ -260,7 +260,7 @@ public class Module : MonoBehaviour
     // EDITOR
     private void GetComponentsIfNotReferenced()
     {
-        // GET COMPONENTS IS NOT REFERENCED
+        // GET COMPONENTS IF NOT REFERENCED
         if (rigidbody2d == null)
             if (GetComponent<Rigidbody2D>())
                 rigidbody2d = GetComponent<Rigidbody2D>();
@@ -272,6 +272,18 @@ public class Module : MonoBehaviour
         if (fixedJoint == null)
             if (GetComponent<FixedJoint2D>())
                 fixedJoint = GetComponent<FixedJoint2D>();
+
+        if (reactor01 == null)
+            if (GetComponent<Reactor01>())
+                reactor01 = GetComponent<Reactor01>();
+
+        if (mother01 == null)
+            if (GetComponent<Mother01>())
+                mother01 = GetComponent<Mother01>();
+
+        if (blaster01 == null)
+            if (GetComponent<Blaster01>())
+                blaster01 = GetComponent<Blaster01>();
     }
 
     private void DisableEditorInfo()

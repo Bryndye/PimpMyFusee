@@ -29,7 +29,6 @@ public class CameraMovements : MonoBehaviour
     [SerializeField] float upperSpeedLimit = 50;
     float baseSize = 5;
     Vector3 basePosition = new Vector3(0, 0, -10);
-    
 
 
 

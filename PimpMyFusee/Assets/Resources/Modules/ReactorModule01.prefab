@@ -147,8 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedModuleScript: {fileID: 2372076872803473686}
   rigidbody2d: {fileID: 5738033349849330576}
-  reactorpower: 5000
-  horizontalNoiseLimits: {x: -30, y: 30}
+  reactorpower: 1500
+  horizontalNoiseLimits: {x: -20, y: 20}
 --- !u!1001 &2372076873480525528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.75
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.y
