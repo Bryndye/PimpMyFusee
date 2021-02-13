@@ -36,7 +36,7 @@ public class Control01 : MonoBehaviour
                 // Unstable trajectory
                 Vector2 newForce = Input.GetAxis("Horizontal") * transform.right * controlForce;
 
-
+                Debug.Log(newForce);
                 if (rigidbody2d != null)
                     rigidbody2d.AddForce(newForce, ForceMode2D.Force);
             }

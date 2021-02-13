@@ -332,7 +332,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 30
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -393,7 +393,7 @@ MonoBehaviour:
   mother01: {fileID: 0}
   reactor01: {fileID: 0}
   blaster01: {fileID: 0}
-  control01: {fileID: 0}
+  control01: {fileID: 172123968}
   editorObjects: {fileID: 1414713829}
 --- !u!114 &686231499
 MonoBehaviour:
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedModuleScript: {fileID: 686231502}
   rigidbody2d: {fileID: 8019461466902291784}
-  controlForce: 140
+  controlForce: 600
 --- !u!1 &8019461468124071860
 GameObject:
   m_ObjectHideFlags: 0

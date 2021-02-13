@@ -103,7 +103,7 @@ public class ManagerShop : Singleton<ManagerShop>
     }
 
     [Header("MODULES BUTTONS")]
-    [SerializeField] Transform buttonsParent = null;
+    [SerializeField] RectTransform buttonsParent = null;
     [SerializeField] GameObject buttonPrefab = null;
     [SerializeField] ModulesData modulesData = null;
     List<GameObject> buttonsList = new List<GameObject>();
@@ -111,6 +111,8 @@ public class ManagerShop : Singleton<ManagerShop>
 
     public void CreateButtons()
     {
+        float horizontalSize = 0;
+
         if (modulesData != null && modulesData.modulesList.Count > 0)
             for (int i = 0; i < modulesData.modulesList.Count; i++)
             {
@@ -121,7 +123,11 @@ public class ManagerShop : Singleton<ManagerShop>
                 buttonScript.coutModule_t.text = modulesData.modulesList[i].prefab.GetComponent<Module>().cost.ToString();
                 buttonScript.moduleIcon.sprite = modulesData.modulesList[i].icon;
                 buttonScript.SetUpButton();
+
+                horizontalSize += buttonScript.gameObject.GetComponent<RectTransform>().sizeDelta.x + buttonsParent.gameObject.GetComponent<HorizontalLayoutGroup>().spacing;
             }
+
+        buttonsParent.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, horizontalSize);
     }
 
 
