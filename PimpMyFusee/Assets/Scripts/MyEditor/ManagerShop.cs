@@ -16,6 +16,14 @@ public class ManagerShop : Singleton<ManagerShop>
         {
             Destroy(this);
         }
+        if (PlayerPrefs.HasKey("Gold"))
+        {
+            Gold = PlayerPrefs.GetInt("Gold");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Gold", Gold);
+        }
     }
 
     private void Update()

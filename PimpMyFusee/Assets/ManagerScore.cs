@@ -46,6 +46,7 @@ public class ManagerScore : Singleton<ManagerScore>
             MeterMax = Meter;
         }
         mShop.Gold += Mathf.RoundToInt(Meter / 10);
+        PlayerPrefs.SetInt("Gold",mShop.Gold);
         Meter = 0;
         scoreMax_t.text = MeterMax.ToString() + " MAX";
     }
