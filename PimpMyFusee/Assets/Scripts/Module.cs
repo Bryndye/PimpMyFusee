@@ -225,7 +225,7 @@ public class Module : MonoBehaviour
 
         // COLLISION LAYER
         //gameObject.layer = connectedLayer;
-        Debug.Log(connectedLayer);
+        //Debug.Log(connectedLayer);
     }
 
 

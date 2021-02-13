@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522257450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 1.026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6826512819415137037}
@@ -154,6 +154,14 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 1414713829, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414713830, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2035542713, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_text
       value: Blaster
@@ -172,11 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.5757769
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.4699731
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -213,6 +221,10 @@ PrefabInstance:
     - target: {fileID: 8019461466902291791, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_Name
       value: BlasterModule01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019461468124071863, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8019461468414399769, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_Name
