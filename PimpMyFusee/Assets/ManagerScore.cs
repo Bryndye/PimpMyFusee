@@ -37,7 +37,7 @@ public class ManagerScore : Singleton<ManagerScore>
         mShop = ManagerShop.Instance;
     }
 
-    private void Update()
+    private void Update()                                                           // UPDATE
     {
         if (manager.simulationStarted)
         {
