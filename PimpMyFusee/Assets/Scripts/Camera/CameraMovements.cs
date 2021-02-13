@@ -58,7 +58,7 @@ public class CameraMovements : MonoBehaviour
                 case CameraMode.game:
                     // Movements
                     if (moduleToFollow != null)
-                        CameraMovementsHandle(moduleToFollow.transform.position);
+                        CameraMovementsHandle(moduleToFollow.transform.position, maxOffset, 5f);
                     else
                         moduleToFollow = FindObjectOfType<Module>().gameObject;
 
@@ -79,7 +79,7 @@ public class CameraMovements : MonoBehaviour
 
                 case CameraMode.garage:
                     // Movements
-                    CameraMovementsHandle(basePosition);
+                    CameraMovementsHandle(basePosition, Vector3.zero, 5f, 10f);
                     cameraa.orthographicSize = Mathf.Lerp(cameraa.orthographicSize, baseSize, Time.deltaTime * 10);
                     break;
             }
@@ -89,7 +89,7 @@ public class CameraMovements : MonoBehaviour
 
 
 
-    void CameraMovementsHandle(Vector3 positionToFollow, float movementSPeed = 5f)
+    void CameraMovementsHandle(Vector3 positionToFollow, Vector3 maxOffset, float movementSpeed = 5f, float offSetSpeed = 1f)
     {
         // OFFSET
         Vector3 newOffset = new Vector3(0, 0, 0);
@@ -103,7 +103,7 @@ public class CameraMovements : MonoBehaviour
         else
             newOffset = maxOffset * (speed / upperSpeedLimit);
 
-        currentOffset = Vector3.Lerp(currentOffset, newOffset, Time.deltaTime);
+        currentOffset = Vector3.Lerp(currentOffset, newOffset, Time.deltaTime * offSetSpeed);
 
 
 
