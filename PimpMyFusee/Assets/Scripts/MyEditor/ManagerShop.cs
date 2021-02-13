@@ -43,7 +43,7 @@ public class ManagerShop : Singleton<ManagerShop>
             {
                 moduleInstance.transform.Rotate(new Vector3(moduleInstance.transform.localEulerAngles.x, moduleInstance.transform.localEulerAngles.y, -45));
             }
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 moduleInstance.GetComponent<Module>().StartDrag(false);
                 moduleInstance = null;
@@ -61,7 +61,7 @@ public class ManagerShop : Singleton<ManagerShop>
 
     private void GetModuleInWorld()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
