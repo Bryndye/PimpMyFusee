@@ -15,7 +15,6 @@ public class Bt_Module : MonoBehaviour
     private Button bt;
     [SerializeField] private Text nomModuel_t;
     [SerializeField] private Text coutModule_t;
-
     private void Awake()
     {
         ms = ManagerShop.Instance;
