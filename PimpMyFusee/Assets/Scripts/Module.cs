@@ -39,6 +39,7 @@ public class Module : MonoBehaviour
 
 
     [Header("SUB MODULES")]
+    [SerializeField] Mother01 mother01 = null;
     [SerializeField] Reactor01 reactor01 = null;
     [SerializeField] Blaster01 blaster01 = null;
 
@@ -123,6 +124,8 @@ public class Module : MonoBehaviour
             reactor01.TriggerReactor(state);
         if (blaster01 != null)
             blaster01.TriggerBlaster(state);
+        if (mother01 != null)
+            mother01.TriggerMother(state);
 
 
 
