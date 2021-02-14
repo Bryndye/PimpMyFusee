@@ -18,6 +18,16 @@ public class Control01 : MonoBehaviour
 
 
 
+    [Header("FX")]
+    [SerializeField] ParticleSystem left = null;
+    [SerializeField] ParticleSystem right = null;
+    bool leftState = false;
+    bool lastLeftState = false;
+    bool rightState = false;
+    bool lastRightState = false;
+
+
+
 
 
 
@@ -38,6 +48,28 @@ public class Control01 : MonoBehaviour
 
                 if (rigidbody2d != null)
                     rigidbody2d.AddForce(newForce, ForceMode2D.Force);
+
+
+
+
+
+
+                // FX
+                lastLeftState = leftState;
+                lastRightState = rightState;
+                leftState = Input.GetButton("Left");
+                rightState = Input.GetButton("Right");
+
+
+                if (!lastLeftState && leftState)
+                    left.Play();
+                else if (lastLeftState && !leftState)
+                    left.Stop();
+
+                if (!lastRightState && rightState)
+                    right.Play();
+                else if (lastRightState && !rightState)
+                    right.Stop();
             }
         }
     }
