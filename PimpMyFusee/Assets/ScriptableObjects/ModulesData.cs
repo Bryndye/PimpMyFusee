@@ -12,6 +12,8 @@ public class ModulesData : ScriptableObject
         public string name;
         public GameObject prefab;
         public Sprite icon;
+        public bool locked;
+        public int price;
     }
 
     [SerializeField] public List<Module> modulesList = new List<Module>();

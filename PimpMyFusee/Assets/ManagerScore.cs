@@ -16,16 +16,15 @@ public class ManagerScore : Singleton<ManagerScore>
     public int Meter;
     public int MeterMax;
 
-    float objectiveToReach = 0f;
+    [SerializeField] public float firstObjectiveToReach = 100;
+    [HideInInspector] public float objectiveToReach = 100f;
 
 
 
     private void Awake()                                                        // AWAKE
     {
         if (Instance != this)
-        {
             Destroy(this);
-        }
         if (PlayerPrefs.HasKey("MeterMax"))
         {
             MeterMax = PlayerPrefs.GetInt("MeterMax");
@@ -39,6 +38,7 @@ public class ManagerScore : Singleton<ManagerScore>
         scoreMax_t.text = MeterMax + " MAX";
         manager = GetComponent<Manager>();
         mShop = ManagerShop.Instance;
+        objectiveToReach = firstObjectiveToReach;
     }
 
     private void Update()                                                           // UPDATE
@@ -53,7 +53,7 @@ public class ManagerScore : Singleton<ManagerScore>
 
         if (Meter > objectiveToReach)
         {
-            objectiveToReach += 100;
+            objectiveToReach += objectiveToReach;
             Debug.Log("Objective reached");
         }
     }

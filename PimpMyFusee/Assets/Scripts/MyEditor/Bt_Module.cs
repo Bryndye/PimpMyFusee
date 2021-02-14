@@ -10,7 +10,9 @@ public class Bt_Module : MonoBehaviour
     public GameObject prefabModule;
 
     public int EspacePris;
-
+    public int moduleIndex = 0;
+    public bool isBuyButton = false;
+    public int buyPrice = 0;
     private Image icon;
     private Button bt;
     [SerializeField] public Image moduleIcon = null;
@@ -32,7 +34,7 @@ public class Bt_Module : MonoBehaviour
 
         //bt.onClick.AddListener( delegate { ms.InstantiateModule(prefabModule); });
     }
-
+    
     public void SetUpButton()
     {
         bt.onClick.AddListener(delegate { ms.InstantiateModule(prefabModule); });
@@ -40,14 +42,23 @@ public class Bt_Module : MonoBehaviour
 
     private void Update()                                                                       // UPDATE
     {
-        if (ms.EspacePris + EspacePris <= ms.EspaceMax)
+        if (enabled && isActiveAndEnabled)
         {
-            bt.interactable = true;
-        }
-        else
-        {
-            bt.interactable = false;
-        }
+            if (isBuyButton)
+            {
+                if (ms.Gold >= buyPrice)
+                    bt.interactable = true;
+                else
+                    bt.interactable = false;
+            }
+            else
+            {
+                if (ms.EspacePris + EspacePris <= ms.EspaceMax)
+                    bt.interactable = true;
+                else
+                    bt.interactable = false;
+            }
+        } 
     }
 
     private void OnDrawGizmos()                                                                                 // ON DRAW GIZMOS
@@ -60,5 +71,15 @@ public class Bt_Module : MonoBehaviour
         {
             gameObject.name = "Button ";
         }
+    }
+
+
+    public void BuyModule()
+    {
+        ModulesData.Module module = ManagerShop.Instance.modulesData.modulesList[moduleIndex];
+        module.locked = false;
+        ManagerShop.Instance.modulesData.modulesList[moduleIndex] = module;
+
+        ManagerShop.Instance.CreateButtons();
     }
 }

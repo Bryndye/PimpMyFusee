@@ -101,31 +101,67 @@ public class ManagerShop : Singleton<ManagerShop>
     [Header("MODULES BUTTONS")]
     [SerializeField] RectTransform buttonsParent = null;
     [SerializeField] GameObject buttonPrefab = null;
-    [SerializeField] ModulesData modulesData = null;
+    [SerializeField] GameObject buyButtonPrefab = null;
+    [SerializeField] public ModulesData modulesData = null;
     List<GameObject> buttonsList = new List<GameObject>();
 
-
+    
     public void CreateButtons()
     {
+        SaveModules();
+
+        for (int i = 0; i < buttonsParent.childCount; i++)
+            Destroy(buttonsParent.GetChild(i).gameObject);
+        buttonsList.Clear();
+        
+
         float horizontalSize = 0;
 
         if (modulesData != null && modulesData.modulesList.Count > 0)
             for (int i = 0; i < modulesData.modulesList.Count; i++)
             {
-                buttonsList.Add(Instantiate(buttonPrefab, buttonsParent));
-                Bt_Module buttonScript = buttonsList[i].GetComponent<Bt_Module>();
+                Bt_Module buttonScript = null;
+                if (modulesData.modulesList[i].locked)
+                {
+                    GameObject newButton;
+                    buttonsList.Add(Instantiate(buyButtonPrefab, buttonsParent));
+                    newButton = buttonsList[i];
+                    buttonScript = buttonsList[i].GetComponent<Bt_Module>();
+                    buttonScript.buyPrice = modulesData.modulesList[i].price;
+                    buttonScript.coutModule_t.text = modulesData.modulesList[i].price.ToString();
+                    buttonScript.moduleIndex = i;
+                    buttonScript.isBuyButton = true;
+                    buttonScript.GetComponent<Button>().onClick.AddListener(delegate { buttonScript.BuyModule(); });
+                }
+                else
+                {
+                    buttonsList.Add(Instantiate(buttonPrefab, buttonsParent));
+                    buttonScript = buttonsList[i].GetComponent<Bt_Module>();
+                    buttonScript.prefabModule = modulesData.modulesList[i].prefab;
+                    buttonScript.coutModule_t.text = modulesData.modulesList[i].prefab.GetComponent<Module>().cost.ToString();
+                    buttonScript.SetUpButton();
+                }
 
-                buttonScript.prefabModule = modulesData.modulesList[i].prefab;
-                buttonScript.coutModule_t.text = modulesData.modulesList[i].prefab.GetComponent<Module>().cost.ToString();
+                
                 buttonScript.moduleIcon.sprite = modulesData.modulesList[i].icon;
-                buttonScript.SetUpButton();
 
-                horizontalSize += buttonScript.gameObject.GetComponent<RectTransform>().sizeDelta.x + buttonsParent.gameObject.GetComponent<HorizontalLayoutGroup>().spacing;
+                horizontalSize += buttonsList[i].GetComponent<RectTransform>().sizeDelta.x + buttonsParent.gameObject.GetComponent<HorizontalLayoutGroup>().spacing;
             }
 
         buttonsParent.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, horizontalSize);
     }
+    
 
+    public void BuyModule(int index)
+    {
+        Debug.Log(index);
+        
+        ModulesData.Module module = modulesData.modulesList[index];
+        module.locked = false;
+        modulesData.modulesList[index] = module;
+
+        CreateButtons();
+    }
 
 
 
@@ -191,37 +227,57 @@ public class ManagerShop : Singleton<ManagerShop>
     private void Save()
     {
         if (PlayerPrefs.HasKey("Gold"))
-        {
             Gold = PlayerPrefs.GetInt("Gold");
-            //Debug.Log("setup gold");
-        }
         else
-        {
             PlayerPrefs.SetInt("Gold", Gold);
-            //Debug.Log("create key");
-        }
+
 
         if (PlayerPrefs.HasKey("PriceUp"))
-        {
             PriceUp = PlayerPrefs.GetInt("PriceUp");
-            //Debug.Log("setup PriceUp");
-        }
         else
-        {
             PlayerPrefs.SetInt("PriceUp", PriceUp);
-            //Debug.Log("create PriceUp");
-        }
+
         
         if (PlayerPrefs.HasKey("EspaceMax"))
-        {
             EspaceMax = PlayerPrefs.GetInt("EspaceMax");
-            //Debug.Log("setup EspaceMax");
+        else
+            PlayerPrefs.SetInt("EspaceMax", EspaceMax);
+
+
+        if (PlayerPrefs.HasKey("Modules") && PlayerPrefs.GetString("Modules") != "")
+        {
+            string boughtModules = PlayerPrefs.GetString("Modules");
+            List<ModulesData.Module> modulesList = modulesData.modulesList;
+
+
+            for (int i = 0; i < modulesList.Count; i++)
+            {
+                ModulesData.Module module = modulesData.modulesList[i];
+                if (boughtModules[i].Equals('0'))
+                    module.locked = false;
+                else
+                    module.locked = true;
+                modulesData.modulesList[i] = module;
+            }
         }
         else
         {
-            PlayerPrefs.SetInt("EspaceMax", EspaceMax);
-            //Debug.Log("create EspaceMax");
+            SaveModules();
         }
+    }
+
+    void SaveModules()
+    {
+        string boughtModules = "";
+        for (int i = 0; i < modulesData.modulesList.Count; i++)
+        {
+            if (modulesData.modulesList[i].locked)
+                boughtModules += "1";
+            else
+                boughtModules += "0";
+        }
+        PlayerPrefs.SetString("Modules", boughtModules);
+        Debug.Log("Set modules save");
     }
 
     public void ResetSave()
@@ -230,6 +286,7 @@ public class ManagerShop : Singleton<ManagerShop>
         PlayerPrefs.SetInt("PriceUp", 100);
         PlayerPrefs.SetInt("Gold", 100);
         PlayerPrefs.SetInt("MeterMax", 0);
+        PlayerPrefs.SetString("Modules", "");
         Application.Quit();
     }
 

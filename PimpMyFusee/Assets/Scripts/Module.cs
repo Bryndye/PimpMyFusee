@@ -259,7 +259,8 @@ public class Module : MonoBehaviour
         {
             if (spriteRenderers != null && spriteRenderers.Length > 0)
                 for (int i = 0; i < spriteRenderers.Length; i++)
-                    spriteRenderers[i].color = connectColor;
+                    if (spriteRenderers[i] != null)
+                        spriteRenderers[i].color = connectColor;
 
             connectedGraphicsEnabled = true;
             connectedGraphicsEnableStartTime = Time.time;
@@ -284,7 +285,13 @@ public class Module : MonoBehaviour
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
         for (int i = 0; i < spriteRenderers.Length; i++)
-            spriteRenderersBaseColors.Add(spriteRenderers[i].color);
+        {
+            if (spriteRenderers[i] != null)
+                spriteRenderersBaseColors.Add(spriteRenderers[i].color);
+            else
+                spriteRenderersBaseColors.Add(Color.red);
+        }
+            
     }
 
 

@@ -59,12 +59,14 @@ public class Manager : MonoBehaviour
     public void StartSimulation(bool on = false)
     {
         EnableEditorUI(!on);
-
         simulationStarted = on;
 
+        // SCORE
         //Put Score Into Manager
         if (!on)
             ms.GetTheScore();
+        ManagerScore.Instance.objectiveToReach = ManagerScore.Instance.firstObjectiveToReach;
+
 
         // Find modules in scene
         if (getAllModulesOnStart)

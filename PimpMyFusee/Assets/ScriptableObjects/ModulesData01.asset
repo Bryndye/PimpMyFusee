@@ -16,15 +16,25 @@ MonoBehaviour:
   - name: Reactor
     prefab: {fileID: 5738033349849330583, guid: fa425061dbb7ffd4288668220aa33f41, type: 3}
     icon: {fileID: 21300000, guid: d52a93cf6673e1e419515ddfa3533f02, type: 3}
+    locked: 0
+    price: 0
   - name: Cube
     prefab: {fileID: 8019461466902291791, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
     icon: {fileID: 21300000, guid: 14b43d3e846cbc04da76e4eee78f1d94, type: 3}
+    locked: 0
+    price: 0
   - name: Blaster
     prefab: {fileID: 6826512819415137036, guid: 7f1fec9e48246884799051ced6322fc6, type: 3}
     icon: {fileID: 21300000, guid: 057469ae06412524990bb715c6eee99c, type: 3}
+    locked: 1
+    price: 200
   - name: Shield
     prefab: {fileID: 6622653663048388623, guid: fad7c7dd335a55441825741fd6006988, type: 3}
     icon: {fileID: 21300000, guid: 0ec337323059a5a448c1566d698092d1, type: 3}
+    locked: 1
+    price: 300
   - name: Control
     prefab: {fileID: 8019461466902291791, guid: 8ccb432fb1ef89047977bc062cb3c11b, type: 3}
     icon: {fileID: 21300000, guid: bcc3a6807f4bdc1429096fcfcfa3b20f, type: 3}
+    locked: 1
+    price: 500

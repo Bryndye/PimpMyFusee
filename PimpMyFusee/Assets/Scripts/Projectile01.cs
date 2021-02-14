@@ -50,8 +50,10 @@ public class Projectile01 : MonoBehaviour
     {
         if (collision.gameObject != moduleShooter.gameObject)
         {
-            if (collision.gameObject.GetComponent<Rigidbody2D>())
+            if (collision.gameObject.GetComponent<Rigidbody2D>() && !collision.gameObject.GetComponent<Mother01>())
                 Destroy(collision.gameObject);
+
+
             Destroy(gameObject);
         }
     }
