@@ -5046,6 +5046,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -708427702139416895}
     - target: {fileID: 686231502, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: graphicsObject
+      value: 
+      objectReference: {fileID: 6622653664544912116}
+    - target: {fileID: 686231502, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: jointBreakForce
       value: 12000
       objectReference: {fileID: 0}
@@ -5174,6 +5178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adeeba9b3ed15a645a3c4ea8426e924c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6622653664544912116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8019461468124071860, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+  m_PrefabInstance: {fileID: 3792802588937991488}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6622653664544912119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8019461468124071863, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}

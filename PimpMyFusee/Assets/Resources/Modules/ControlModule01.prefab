@@ -109,8 +109,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -362,8 +362,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -723,6 +723,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 8019461466902291784}
   collider2d: {fileID: 8019461466902291785}
+  triggerCollider2d: {fileID: 0}
+  graphicsObject: {fileID: 0}
   defaultLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -736,6 +738,7 @@ MonoBehaviour:
   reactor01: {fileID: 0}
   blaster01: {fileID: 0}
   control01: {fileID: 172123968}
+  shield01: {fileID: 0}
   editorObjects: {fileID: 1414713829}
 --- !u!114 &686231499
 MonoBehaviour:

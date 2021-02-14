@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1414713830
 Transform:
   m_ObjectHideFlags: 0
@@ -298,6 +298,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 8019461466902291784}
   collider2d: {fileID: 8019461466902291785}
+  triggerCollider2d: {fileID: 1257271428}
+  graphicsObject: {fileID: 0}
   defaultLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -310,6 +312,8 @@ MonoBehaviour:
   mother01: {fileID: 0}
   reactor01: {fileID: 0}
   blaster01: {fileID: 0}
+  control01: {fileID: 0}
+  shield01: {fileID: 0}
   editorObjects: {fileID: 1414713829}
 --- !u!114 &686231499
 MonoBehaviour:
@@ -451,8 +455,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a15c7718a28edb24ab2fe0183382abe9, type: 3}
-  m_Color: {r: 1, g: 0.5231711, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 76419e5ea7b54184a809db7e0b48e198, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

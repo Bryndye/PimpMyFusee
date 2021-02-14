@@ -63,8 +63,14 @@ public class Shield01 : MonoBehaviour
         if (state)
             charges = maxCharges;
 
-        DisplayCharges();
+        
         canRepel = true;
+
+        connectedModuleScript.graphicsObject.SetActive(true);
+        connectedModuleScript.collider2d.enabled = true;
+        connectedModuleScript.triggerCollider2d.enabled = true;
+
+        DisplayCharges();
     }
 
 
@@ -95,7 +101,7 @@ public class Shield01 : MonoBehaviour
             if (collision.gameObject != this.gameObject && !collision.gameObject.GetComponent<Module>())
                 if (collision.gameObject.GetComponent<Rigidbody2D>())
                 {
-                    if (canRepel)
+                    if (canRepel && charges > 0)
                     {
                         collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * repelStrength, ForceMode2D.Impulse);
                         if (repelFX01 != null)
@@ -108,7 +114,10 @@ public class Shield01 : MonoBehaviour
 
                         if (charges <= 0)
                         {
-                            Debug.Log("Dead");
+                            // Disable shield
+                            connectedModuleScript.graphicsObject.SetActive(false);
+                            connectedModuleScript.collider2d.enabled = false;
+                            connectedModuleScript.triggerCollider2d.enabled = false;
                         }
                     }
                 }

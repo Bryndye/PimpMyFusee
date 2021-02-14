@@ -10,7 +10,9 @@ public class Module : MonoBehaviour
 {
     [Header("COMPONENTS")]
     [SerializeField] public Rigidbody2D rigidbody2d = null;
-    [SerializeField] Collider2D collider2d = null;
+    [SerializeField] public Collider2D collider2d = null;
+    [SerializeField] public Collider2D triggerCollider2d = null;
+    [SerializeField] public GameObject graphicsObject = null;
     FixedJoint2D fixedJoint = null;
 
     [Header("DATA")]
@@ -128,19 +130,6 @@ public class Module : MonoBehaviour
         rigidbody2d.isKinematic = !state;
 
 
-        // Sub modules
-        if (reactor01 != null)
-            reactor01.TriggerReactor(state);
-        if (blaster01 != null)
-            blaster01.TriggerBlaster(state);
-        if (mother01 != null)
-            mother01.TriggerMother(state);
-        if (control01 != null)
-            control01.TriggerControl(state);
-        if (shield01 != null)
-            shield01.TriggerShield(state);
-
-
         rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.angularVelocity = 0;
 
@@ -178,6 +167,20 @@ public class Module : MonoBehaviour
                 //fixedJoint.breakTorque = jointBreakForce;
             }
         }
+
+
+
+        // Sub modules
+        if (reactor01 != null)
+            reactor01.TriggerReactor(state);
+        if (blaster01 != null)
+            blaster01.TriggerBlaster(state);
+        if (mother01 != null)
+            mother01.TriggerMother(state);
+        if (control01 != null)
+            control01.TriggerControl(state);
+        if (shield01 != null)
+            shield01.TriggerShield(state);
     }
 
 
