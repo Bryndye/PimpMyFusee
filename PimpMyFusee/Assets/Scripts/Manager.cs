@@ -63,9 +63,11 @@ public class Manager : MonoBehaviour
 
         // SCORE
         //Put Score Into Manager
+        
         if (!on)
             ms.GetTheScore();
-        ManagerScore.Instance.objectiveToReach = ManagerScore.Instance.firstObjectiveToReach;
+            
+        ManagerScore.Instance.objectiveToReach = ManagerScore.Instance.metersToGetGold;
 
 
         // Find modules in scene

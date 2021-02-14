@@ -97,7 +97,7 @@ public class ManagerShop : Singleton<ManagerShop>
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 Mother01 mom = hit.collider.GetComponent<Mother01>();
-                if (mom == null)
+                if (mom == null && hit.collider.gameObject.GetComponent<Module>())
                 {
                     Destroy(hit.collider.gameObject);
                 }
@@ -213,6 +213,7 @@ public class ManagerShop : Singleton<ManagerShop>
     public int PriceUp = 100;
     [SerializeField] private Button bt_up;
     [SerializeField] TextMeshProUGUI priceUpText = null;
+    [SerializeField] GameObject goldUp = null;
     public void AddEspaceMax()
     {
         Gold -= PriceUp;
@@ -240,8 +241,11 @@ public class ManagerShop : Singleton<ManagerShop>
     {
         Gold += gold;
         PlayerPrefs.SetInt("Gold",Gold);
-
-        if (GoldBonus_t != null)
+        goldUp.GetComponent<GoldPlus>().amountText.text = gold.ToString();
+        goldUp.SetActive(false);
+        goldUp.SetActive(true);
+        
+        if (GoldBonus_t != null && hauteur > 0)
         {
             GoldBonus_t.text = "Objectif: " + hauteur+" reach!\nGold: " + gold;
             Invoke(nameof(DesaText), 3);   

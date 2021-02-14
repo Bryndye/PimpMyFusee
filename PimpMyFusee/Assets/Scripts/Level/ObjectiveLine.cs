@@ -7,7 +7,6 @@ public class ObjectiveLine : MonoBehaviour
 {
     [SerializeField] Transform objectToFollowX = null;
     [SerializeField] TextMeshPro text = null;
-
     [SerializeField] private int GoldBonus;
 
     // Start is called before the first frame update

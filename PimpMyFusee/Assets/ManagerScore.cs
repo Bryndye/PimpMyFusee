@@ -16,8 +16,8 @@ public class ManagerScore : Singleton<ManagerScore>
     public int Meter;
     public int MeterMax;
 
-    [SerializeField] public float firstObjectiveToReach = 100;
-    [HideInInspector] public float objectiveToReach = 100f;
+    [SerializeField] public float metersToGetGold = 2;
+    [HideInInspector] public float objectiveToReach = 2;
 
 
 
@@ -38,16 +38,26 @@ public class ManagerScore : Singleton<ManagerScore>
         scoreMax_t.text = MeterMax + " MAX";
         manager = GetComponent<Manager>();
         mShop = ManagerShop.Instance;
-        objectiveToReach = firstObjectiveToReach;
+        objectiveToReach = metersToGetGold;
     }
 
     private void Update()                                                           // UPDATE
     {
         if (manager.simulationStarted)
             if (motherModule != null && motherModule.position.y > Meter)
+            {
                 Meter = Mathf.RoundToInt(motherModule.position.y);
 
+                if (Meter > objectiveToReach)
+                {
+                    objectiveToReach += metersToGetGold;
+                    mShop.AddGold(1, 0);
+                    PlayerPrefs.SetInt("Gold", mShop.Gold);
+                }
+            }
 
+
+        
         score_t.text = Meter + "m";
     }
 
@@ -58,7 +68,7 @@ public class ManagerScore : Singleton<ManagerScore>
             MeterMax = Meter;
             PlayerPrefs.SetInt("MeterMax", MeterMax);
         }
-        mShop.Gold += Mathf.RoundToInt(Meter / 10);
+        //mShop.Gold += Mathf.RoundToInt(Meter / 10);
         PlayerPrefs.SetInt("Gold",mShop.Gold);
         Meter = 0;
         UpdateBestScore();

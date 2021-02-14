@@ -23,6 +23,9 @@ public class Blaster01 : MonoBehaviour
     private Animator anim;
 
 
+    [Header("AUDIO")]
+    [SerializeField] AudioSource pewSFX = null;
+
 
 
     #region FUNCTIONS
@@ -52,12 +55,7 @@ public class Blaster01 : MonoBehaviour
     {
         blasterActivated = on;
         if (on)
-
-        {
-
             Shoot();
-
-        }
     }
 
     void Shoot()
@@ -65,12 +63,9 @@ public class Blaster01 : MonoBehaviour
         Projectile01 lastShotProjectile = null;
 
         if (projectilePrefab != null)
-
         {
-
             lastShotProjectile = Instantiate(projectilePrefab, firePoint.position, transform.rotation).GetComponent<Projectile01>();
             Destroy(lastShotProjectile.gameObject, 5f);
-
         }
 
         lastShotProjectile.moduleShooter = connectedModuleScript;
@@ -79,12 +74,12 @@ public class Blaster01 : MonoBehaviour
 
 
         if (anim != null)
-
-        {
-
             anim.SetTrigger("Shoot");
 
-        }
+
+        // AUDIO
+        if (pewSFX != null)
+            pewSFX.Play();
     }
 
 
