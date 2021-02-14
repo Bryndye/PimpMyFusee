@@ -244,7 +244,13 @@ public class ManagerShop : Singleton<ManagerShop>
         if (GoldBonus_t != null)
         {
             GoldBonus_t.text = "Objectif: " + hauteur+" reach!\nGold: " + gold;
+            Invoke(nameof(DesaText), 3);   
         }
+    }
+
+    private void DesaText()
+    {
+        GoldBonus_t.text = "";
     }
     #endregion
 
