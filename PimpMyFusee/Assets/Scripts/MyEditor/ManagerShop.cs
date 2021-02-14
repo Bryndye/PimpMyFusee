@@ -240,12 +240,10 @@ public class ManagerShop : Singleton<ManagerShop>
     {
         Gold += gold;
         PlayerPrefs.SetInt("Gold",Gold);
-        Debug.Log("Bonus");
 
         if (GoldBonus_t != null)
         {
-            Debug.Log("text");
-            GoldBonus_t.text = "Objectif: " + hauteur+" reach!" + "Gold: " + gold;
+            GoldBonus_t.text = "Objectif: " + hauteur+" reach!\nGold: " + gold;
         }
     }
     #endregion
