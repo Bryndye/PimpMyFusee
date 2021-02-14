@@ -79,7 +79,7 @@ public class ManagerShop : Singleton<ManagerShop>
 
         if (hit.collider != null)
         {
-            if (InputModuleDestroy != null)
+            if (InputModuleDestroy != null && !hit.collider.GetComponent<Mother01>())
             {
                 InputModuleDestroy.gameObject.SetActive(true);
                 InputModuleDestroy.position = Input.mousePosition;
