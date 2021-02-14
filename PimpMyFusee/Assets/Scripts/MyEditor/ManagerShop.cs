@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ManagerShop : Singleton<ManagerShop>
 {
     [SerializeField] private GameObject moduleInstance;
-    [SerializeField] private Transform helpPlayer;
+    [SerializeField] private Transform InputModuleInHand;
+    [SerializeField] private Transform InputModuleDestroy;
 
     private void Awake()                                                            // AWAKE
     {
@@ -24,12 +26,11 @@ public class ManagerShop : Singleton<ManagerShop>
 
     private void Update()                                                       // UPDATE
     {
-        if (helpPlayer != null)
-            helpPlayer.position = Input.mousePosition;
         if (!Manager.Instance.simulationStarted)
             ModuleDrag();
         UpdateScore();
         CheckMoney();
+
     }
 
     #region ModuleInWorld
@@ -37,6 +38,16 @@ public class ManagerShop : Singleton<ManagerShop>
     {
         if (moduleInstance != null)
         {
+            if (InputModuleInHand != null)
+            {
+                InputModuleInHand.gameObject.SetActive(true);
+                InputModuleInHand.position = Input.mousePosition;
+            }
+            if (InputModuleInHand != null)
+            {
+                InputModuleDestroy.gameObject.SetActive(false);
+            }
+
             MoveTarget();
             if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
             {
@@ -55,6 +66,10 @@ public class ManagerShop : Singleton<ManagerShop>
         else
         {
             GetModuleInWorld();
+            if (InputModuleInHand != null)
+            {
+                InputModuleInHand.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -64,6 +79,11 @@ public class ManagerShop : Singleton<ManagerShop>
 
         if (hit.collider != null)
         {
+            if (InputModuleDestroy != null && !hit.collider.GetComponent<Mother01>())
+            {
+                InputModuleDestroy.gameObject.SetActive(true);
+                InputModuleDestroy.position = Input.mousePosition;
+            }
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 if (hit.collider.gameObject.GetComponent<Module>())
@@ -80,6 +100,13 @@ public class ManagerShop : Singleton<ManagerShop>
                 {
                     Destroy(hit.collider.gameObject);
                 }
+            }
+        }
+        else
+        {
+            if (InputModuleDestroy != null)
+            {
+                InputModuleDestroy.gameObject.SetActive(false);
             }
         }
     }
@@ -287,7 +314,7 @@ public class ManagerShop : Singleton<ManagerShop>
         PlayerPrefs.SetInt("Gold", 100);
         PlayerPrefs.SetInt("MeterMax", 0);
         PlayerPrefs.SetString("Modules", "");
-        Application.Quit();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     #endregion
