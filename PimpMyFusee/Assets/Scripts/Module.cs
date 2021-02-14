@@ -58,6 +58,7 @@ public class Module : MonoBehaviour
 
     [Header("Animator")]
     private Animator anim;
+    bool JustInitialized = true;
 
 
 
@@ -160,7 +161,10 @@ public class Module : MonoBehaviour
 
             if (anim && reactor01 != null)
             {
-                anim.SetTrigger("Off");
+                if (JustInitialized)
+                    JustInitialized = false;
+                else
+                    anim.SetTrigger("Off");
             }
 
             if (connected)
