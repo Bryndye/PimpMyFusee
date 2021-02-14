@@ -49,7 +49,11 @@ public class Projectile01 : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject != moduleShooter.gameObject)
+        {
+            if (collision.gameObject.GetComponent<Rigidbody2D>())
+                Destroy(collision.gameObject);
             Destroy(gameObject);
+        }
     }
 
 

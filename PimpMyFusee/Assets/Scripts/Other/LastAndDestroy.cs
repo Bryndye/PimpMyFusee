@@ -10,6 +10,7 @@ public class LastAndDestroy : MonoBehaviour
 {
     //Wait amount
     [SerializeField] public float lastDuration;
+    [SerializeField] bool activate = true;
     float spawnTimecode;
 
     //Game object to spawn
@@ -32,7 +33,7 @@ public class LastAndDestroy : MonoBehaviour
 	void Update ()                                                      // UPDATE
     {
         if (enabled && isActiveAndEnabled)
-            if (Time.time >= spawnTimecode + lastDuration)
+            if (activate && Time.time >= spawnTimecode + lastDuration)
                 Destroy(gameObject);
 	}
 

@@ -41,7 +41,7 @@ public class ManagerScore : Singleton<ManagerScore>
     {
         if (manager.simulationStarted)
         {
-            if (motherModule.position.y > Meter)
+            if (motherModule != null && motherModule.position.y > Meter)
             {
                 Meter = Mathf.RoundToInt(motherModule.position.y);
             }
