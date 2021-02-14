@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 // Script for the reactor module
-public class Reactor01 : MonoBehaviour
+public class ZReactor01 : MonoBehaviour
 {
     [Header("COMPONENTS")]
     [SerializeField] Module connectedModuleScript = null;
@@ -19,6 +19,8 @@ public class Reactor01 : MonoBehaviour
     [SerializeField] float fuelAmount = 10f;
     float currentFuelAmount = 10f;
     bool reactorActivated = false;
+    bool thrust = false;
+    bool lastThrustState = false;
 
 
     [Header("FX")]
@@ -39,29 +41,53 @@ public class Reactor01 : MonoBehaviour
     {
         if (isActiveAndEnabled && enabled)
         {
-            if (reactorActivated && currentFuelAmount > 0)
+            if (reactorActivated)
             {
-                // Unstable trajectory
-                Vector2 horizontalNoise = transform.right * Random.Range(horizontalNoiseLimits.x, horizontalNoiseLimits.y);
+                lastThrustState = thrust;
+                thrust = Input.GetButton("Fire1");
 
+                
 
-                if (rigidbody2d != null)
-                    rigidbody2d.AddForce((Vector2)transform.up * reactorpower + horizontalNoise, ForceMode2D.Force);
-
-                currentFuelAmount -= Time.fixedDeltaTime;
-                UpdateFuelVisual();
-
-                if (currentFuelAmount <= 0)
+                // THRUST
+                if (currentFuelAmount > 0)
                 {
-                    fireFX.Stop();
-                    currentFuelAmount = 0;
+                    // FX
+                    if (lastThrustState && !thrust)
+                        fireFX.Stop();
+
+
+                    // FX
+                    if (!lastThrustState && thrust)
+                        fireFX.Play();
+
+
+                    if (thrust)
+                    {
+
+                        // Unstable trajectory
+                        Vector2 horizontalNoise = transform.right * Random.Range(horizontalNoiseLimits.x, horizontalNoiseLimits.y);
+
+
+                        if (rigidbody2d != null)
+                            rigidbody2d.AddForce((Vector2)transform.up * reactorpower + horizontalNoise, ForceMode2D.Force);
+
+
+                        currentFuelAmount -= Time.fixedDeltaTime;
+                        UpdateFuelVisual();
+
+                        if (currentFuelAmount <= 0)
+                        {
+                            fireFX.Stop();
+                            currentFuelAmount = 0;
+                        }
+                    }
                 }
             }
         }
     }
 
 
-    
+
 
 
     /// <summary>
@@ -73,11 +99,9 @@ public class Reactor01 : MonoBehaviour
         reactorActivated = state;
         currentFuelAmount = fuelAmount;
         UpdateFuelVisual();
-        if (state)
-            fireFX.Play();
-        else
-            fireFX.Stop();
 
+
+        fireFX.Stop();
     }
 
 
@@ -91,7 +115,7 @@ public class Reactor01 : MonoBehaviour
 
 
 
-    
+
 
 
 
