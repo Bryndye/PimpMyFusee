@@ -46,43 +46,40 @@ public class ZReactor01 : MonoBehaviour
                 lastThrustState = thrust;
                 thrust = Input.GetButton("Fire1");
 
-
-                Debug.Log(thrust);
-
-                // FX
-                if (lastThrustState && !thrust)
-                {
-                    Debug.Log("End");
-                    fireFX.Stop();
-                }
-
-
-                // FX
-                if (!lastThrustState && thrust)
-                {
-                    Debug.Log("Start");
-                    fireFX.Play();
-                }
-
+                
 
                 // THRUST
-                if (thrust && currentFuelAmount > 0)
+                if (currentFuelAmount > 0)
                 {
-                    
-                    // Unstable trajectory
-                    Vector2 horizontalNoise = transform.right * Random.Range(horizontalNoiseLimits.x, horizontalNoiseLimits.y);
-
-
-                    if (rigidbody2d != null)
-                        rigidbody2d.AddForce((Vector2)transform.up * reactorpower + horizontalNoise, ForceMode2D.Force);
-
-                    currentFuelAmount -= Time.fixedDeltaTime;
-                    UpdateFuelVisual();
-
-                    if (currentFuelAmount <= 0)
-                    {
+                    // FX
+                    if (lastThrustState && !thrust)
                         fireFX.Stop();
-                        currentFuelAmount = 0;
+
+
+                    // FX
+                    if (!lastThrustState && thrust)
+                        fireFX.Play();
+
+
+                    if (thrust)
+                    {
+
+                        // Unstable trajectory
+                        Vector2 horizontalNoise = transform.right * Random.Range(horizontalNoiseLimits.x, horizontalNoiseLimits.y);
+
+
+                        if (rigidbody2d != null)
+                            rigidbody2d.AddForce((Vector2)transform.up * reactorpower + horizontalNoise, ForceMode2D.Force);
+
+
+                        currentFuelAmount -= Time.fixedDeltaTime;
+                        UpdateFuelVisual();
+
+                        if (currentFuelAmount <= 0)
+                        {
+                            fireFX.Stop();
+                            currentFuelAmount = 0;
+                        }
                     }
                 }
             }

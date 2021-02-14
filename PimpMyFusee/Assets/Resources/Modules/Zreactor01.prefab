@@ -5516,8 +5516,8 @@ MonoBehaviour:
   connectedModuleScript: {fileID: 2372076872803473686}
   rigidbody2d: {fileID: 5738033349849330576}
   fuelSlider: {fileID: 1826912366}
-  reactorpower: 10
-  horizontalNoiseLimits: {x: -10, y: 10}
+  reactorpower: 1500
+  horizontalNoiseLimits: {x: -40, y: 40}
   fuelAmount: 10
   fireFX: {fileID: 2992903693666990835}
 --- !u!95 &5245867938955908097
