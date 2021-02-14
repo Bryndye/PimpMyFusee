@@ -147,13 +147,18 @@ public class Module : MonoBehaviour
             startPosition = transform.position;
             if (anim && reactor01 != null)
             {
-                anim.SetTrigger("On/Off");
+                anim.SetTrigger("On");
             }
         } 
         else
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, startRotation);
             transform.position = startPosition;
+
+            if (anim && reactor01 != null)
+            {
+                anim.SetTrigger("Off");
+            }
 
             if (connected)
             {
