@@ -82,7 +82,7 @@ public class Shield01 : MonoBehaviour
             GameObject newCharge = Instantiate(chargeObjectRef, chargesParent);
             newCharge.SetActive(true);
             newCharge.transform.localScale = chargeObjectRef.transform.localScale;
-            newCharge.transform.position = chargeObjectRef.transform.position + new Vector3(0.5f * i, 0, 0);
+            newCharge.transform.position = chargeObjectRef.transform.position + new Vector3(0.7f * i, 0, 0);
         }
     }
 
@@ -95,18 +95,21 @@ public class Shield01 : MonoBehaviour
             if (collision.gameObject != this.gameObject && !collision.gameObject.GetComponent<Module>())
                 if (collision.gameObject.GetComponent<Rigidbody2D>())
                 {
-                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * repelStrength, ForceMode2D.Impulse);
-                    if (repelFX01 != null)
-                        repelFX01.Play();
-
-                    charges--;
-                    Destroy(chargesParent.GetChild(chargesParent.childCount - 1).gameObject);
-                    canRepel = false;
-                    repelCoolDownStartTime = Time.time;
-
-                    if (charges <= 0)
+                    if (canRepel)
                     {
-                        Debug.Log("Dead");
+                        collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * repelStrength, ForceMode2D.Impulse);
+                        if (repelFX01 != null)
+                            repelFX01.Play();
+
+                        charges--;
+                        Destroy(chargesParent.GetChild(chargesParent.childCount - 1).gameObject);
+                        canRepel = false;
+                        repelCoolDownStartTime = Time.time;
+
+                        if (charges <= 0)
+                        {
+                            Debug.Log("Dead");
+                        }
                     }
                 }
     }

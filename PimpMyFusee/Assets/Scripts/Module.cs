@@ -275,7 +275,8 @@ public class Module : MonoBehaviour
             {
                 if (spriteRenderers != null && spriteRenderers.Length > 0)
                     for (int i = 0; i < spriteRenderers.Length; i++)
-                        spriteRenderers[i].color = spriteRenderersBaseColors[i];
+                        if (spriteRenderers[i] != null)
+                            spriteRenderers[i].color = spriteRenderersBaseColors[i];
 
                 connectedGraphicsEnabled = false;
             }
