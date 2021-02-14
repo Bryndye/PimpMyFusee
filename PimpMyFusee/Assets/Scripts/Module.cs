@@ -50,6 +50,7 @@ public class Module : MonoBehaviour
     [SerializeField] Blaster01 blaster01 = null;
     [SerializeField] Control01 control01 = null;
     [SerializeField] Shield01 shield01 = null;
+    [SerializeField] ZReactor01 zReactor01 = null;
 
 
 
@@ -132,7 +133,7 @@ public class Module : MonoBehaviour
 
         rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.angularVelocity = 0;
-
+        
         // Position
         if (state)
         {
@@ -181,6 +182,8 @@ public class Module : MonoBehaviour
             control01.TriggerControl(state);
         if (shield01 != null)
             shield01.TriggerShield(state);
+        if (zReactor01 != null)
+            zReactor01.TriggerReactor(state);
     }
 
 
@@ -344,6 +347,10 @@ public class Module : MonoBehaviour
         if (shield01 == null)
             if (GetComponent<Shield01>())
                 shield01 = GetComponent<Shield01>();
+
+        if (zReactor01 == null)
+            if (GetComponent<ZReactor01>())
+                zReactor01 = GetComponent<ZReactor01>();
     }
 
     private void DisableEditorInfo()

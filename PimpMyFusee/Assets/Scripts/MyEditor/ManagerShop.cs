@@ -244,7 +244,7 @@ public class ManagerShop : Singleton<ManagerShop>
             PlayerPrefs.SetInt("EspaceMax", EspaceMax);
 
 
-        if (PlayerPrefs.HasKey("Modules") && PlayerPrefs.GetString("Modules") != "")
+        if (PlayerPrefs.HasKey("Modules") && PlayerPrefs.GetString("Modules").Length == modulesData.modulesList.Count)
         {
             string boughtModules = PlayerPrefs.GetString("Modules");
             List<ModulesData.Module> modulesList = modulesData.modulesList;
