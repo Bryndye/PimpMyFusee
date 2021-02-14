@@ -25,13 +25,9 @@ public class ManagerShop : Singleton<ManagerShop>
     private void Update()                                                       // UPDATE
     {
         if (helpPlayer != null)
-        {
             helpPlayer.position = Input.mousePosition;
-        }
         if (!Manager.Instance.simulationStarted)
-        {
             ModuleDrag();
-        }
         UpdateScore();
         CheckMoney();
     }
@@ -152,6 +148,7 @@ public class ManagerShop : Singleton<ManagerShop>
     public int Gold;
     public int PriceUp = 100;
     [SerializeField] private Button bt_up;
+    [SerializeField] TextMeshProUGUI priceUpText = null;
     public void AddEspaceMax()
     {
         Gold -= PriceUp;
@@ -164,15 +161,14 @@ public class ManagerShop : Singleton<ManagerShop>
     {
         if (bt_up != null)
         {
-            bt_up.GetComponentInChildren<TextMeshProUGUI>().text = PriceUp.ToString();
+            //bt_up.GetComponentInChildren<TextMeshProUGUI>().text = PriceUp.ToString();
+            if (priceUpText != null)
+                priceUpText.text = PriceUp.ToString(); ;
+
             if (Gold >= PriceUp)
-            {
                 bt_up.interactable = true;
-            }
             else
-            {
                 bt_up.interactable = false;
-            }
         }
     }
     #endregion
