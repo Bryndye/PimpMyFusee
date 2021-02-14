@@ -14,7 +14,7 @@ public class LastAndDestroy : MonoBehaviour
     float spawnTimecode;
 
     //Game object to spawn
-    [SerializeField] public GameObject gameObjectToSpawnOnDestroy;
+    [SerializeField] public List<GameObject> gameObjectsToSpawnOnDestroy = new List<GameObject>();
 
 
 
@@ -39,7 +39,11 @@ public class LastAndDestroy : MonoBehaviour
 
     private void OnDestroy()                                                        // ON DESTROY
     {
-        if (gameObjectToSpawnOnDestroy != null)
-            Instantiate(gameObjectToSpawnOnDestroy, gameObject.transform.position, gameObject.transform.rotation);
+        if (gameObjectsToSpawnOnDestroy != null && gameObjectsToSpawnOnDestroy.Count > 0)
+        {
+            for (int i = 0; i < gameObjectsToSpawnOnDestroy.Count; i++)
+                if (gameObjectsToSpawnOnDestroy[i] != null)
+                Instantiate(gameObjectsToSpawnOnDestroy[i], gameObject.transform.position, gameObject.transform.rotation);
+        }
     }
 }

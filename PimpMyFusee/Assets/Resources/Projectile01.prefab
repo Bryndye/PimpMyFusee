@@ -152,7 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastDuration: 3
-  gameObjectToSpawnOnDestroy: {fileID: 1913774482955017991, guid: ac5b78344b8074d48826eda2b0303f81, type: 3}
+  activate: 1
+  gameObjectsToSpawnOnDestroy:
+  - {fileID: 1913774482955017991, guid: ac5b78344b8074d48826eda2b0303f81, type: 3}
 --- !u!1 &5432555833086401550
 GameObject:
   m_ObjectHideFlags: 0

@@ -174,7 +174,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastDuration: 0
   activate: 0
-  gameObjectToSpawnOnDestroy: {fileID: 1913774482955017991, guid: 8d138795aac6c944aa6baaa5a69facba, type: 3}
+  gameObjectsToSpawnOnDestroy:
+  - {fileID: 1913774482955017991, guid: 8d138795aac6c944aa6baaa5a69facba, type: 3}
+  - {fileID: 1837402873944241271, guid: 679f71a1aac4ae84ab426ae241501963, type: 3}
+  - {fileID: 1837402873944241271, guid: 679f71a1aac4ae84ab426ae241501963, type: 3}
+  - {fileID: 1837402873944241271, guid: 679f71a1aac4ae84ab426ae241501963, type: 3}
 --- !u!1 &7116071429376325858
 GameObject:
   m_ObjectHideFlags: 0

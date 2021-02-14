@@ -16,7 +16,11 @@ public class ManagerScore : Singleton<ManagerScore>
     public int Meter;
     public int MeterMax;
 
-    private void Awake()
+    float objectiveToReach = 0f;
+
+
+
+    private void Awake()                                                        // AWAKE
     {
         if (Instance != this)
         {
@@ -40,14 +44,18 @@ public class ManagerScore : Singleton<ManagerScore>
     private void Update()                                                           // UPDATE
     {
         if (manager.simulationStarted)
-        {
             if (motherModule != null && motherModule.position.y > Meter)
-            {
                 Meter = Mathf.RoundToInt(motherModule.position.y);
-            }
-        }
+
+
         score_t.text = Meter + "m";
 
+
+        if (Meter > objectiveToReach)
+        {
+            objectiveToReach += 100;
+            Debug.Log("Objective reached");
+        }
     }
 
     public void GetTheScore()

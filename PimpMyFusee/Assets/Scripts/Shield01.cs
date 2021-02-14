@@ -57,7 +57,6 @@ public class Shield01 : MonoBehaviour
                 if (collision.gameObject.GetComponent<Rigidbody2D>())
                 {
                     collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * repelStrength, ForceMode2D.Impulse);
-                    Debug.Log((collision.transform.position - transform.position) * repelStrength);
                     if (repelFX01 != null)
                         repelFX01.Play();
                 }
