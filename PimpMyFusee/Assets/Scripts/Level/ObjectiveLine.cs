@@ -8,7 +8,7 @@ public class ObjectiveLine : MonoBehaviour
     [SerializeField] Transform objectToFollowX = null;
     [SerializeField] TextMeshPro text = null;
 
-
+    [SerializeField] private int GoldBonus;
 
     // Start is called before the first frame update
     private void Awake()                                                            // AWAKE
@@ -31,5 +31,14 @@ public class ObjectiveLine : MonoBehaviour
     {
         if (objectToFollowX == null)
             objectToFollowX = FindObjectOfType<Module>().gameObject.transform;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Mother01>() != null)
+        {
+            Debug.Log("Bonus");
+            ManagerShop.Instance.AddGold(GoldBonus, transform.position.y);
+        }
     }
 }

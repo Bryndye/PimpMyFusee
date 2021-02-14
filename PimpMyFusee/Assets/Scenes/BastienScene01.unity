@@ -380,6 +380,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
+      propertyPath: GoldBonus
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
       propertyPath: objectToFollowX
       value: 
       objectReference: {fileID: 1841927377}
@@ -458,6 +462,10 @@ PrefabInstance:
     - target: {fileID: 8653240952629377100, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
+      propertyPath: GoldBonus
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
       propertyPath: objectToFollowX
@@ -964,6 +972,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
+      propertyPath: GoldBonus
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
       propertyPath: objectToFollowX
       value: 
       objectReference: {fileID: 1841927377}
@@ -1458,6 +1470,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
+      propertyPath: GoldBonus
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
       propertyPath: objectToFollowX
       value: 
       objectReference: {fileID: 1841927377}
@@ -1775,6 +1791,10 @@ PrefabInstance:
     - target: {fileID: 8653240952629377100, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
+      propertyPath: GoldBonus
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8653240952629377101, guid: 7c6b91b616498d24dad263a2a2372a9b, type: 3}
       propertyPath: objectToFollowX

@@ -49,13 +49,6 @@ public class ManagerScore : Singleton<ManagerScore>
 
 
         score_t.text = Meter + "m";
-
-
-        if (Meter > objectiveToReach)
-        {
-            objectiveToReach += objectiveToReach;
-            Debug.Log("Objective reached");
-        }
     }
 
     public void GetTheScore()

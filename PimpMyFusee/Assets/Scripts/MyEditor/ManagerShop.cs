@@ -11,6 +11,7 @@ public class ManagerShop : Singleton<ManagerShop>
     [SerializeField] private GameObject moduleInstance;
     [SerializeField] private Transform InputModuleInHand;
     [SerializeField] private Transform InputModuleDestroy;
+    [SerializeField] private TextMeshProUGUI GoldBonus_t;
 
     private void Awake()                                                            // AWAKE
     {
@@ -79,7 +80,7 @@ public class ManagerShop : Singleton<ManagerShop>
 
         if (hit.collider != null)
         {
-            if (InputModuleDestroy != null && !hit.collider.GetComponent<Mother01>())
+            if (InputModuleDestroy != null && !hit.collider.GetComponent<Mother01>() && hit.collider.GetComponent<Module>() != null)
             {
                 InputModuleDestroy.gameObject.SetActive(true);
                 InputModuleDestroy.position = Input.mousePosition;
@@ -232,6 +233,17 @@ public class ManagerShop : Singleton<ManagerShop>
                 bt_up.interactable = true;
             else
                 bt_up.interactable = false;
+        }
+    }
+
+    public void AddGold(int gold, float hauteur)
+    {
+        Gold += gold;
+        PlayerPrefs.SetInt("Gold",Gold);
+
+        if (GoldBonus_t != null)
+        {
+            GoldBonus_t.text = "Objectif: " + hauteur+" reach!\nGold: " + gold;
         }
     }
     #endregion
