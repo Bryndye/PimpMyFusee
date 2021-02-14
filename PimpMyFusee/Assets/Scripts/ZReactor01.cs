@@ -26,6 +26,9 @@ public class ZReactor01 : MonoBehaviour
     [Header("FX")]
     [SerializeField] ParticleSystem fireFX = null;
 
+    [Header("AUDIO")]
+    [SerializeField] AudioSource thrustSFX = null;
+
 
 
 
@@ -53,12 +56,18 @@ public class ZReactor01 : MonoBehaviour
                 {
                     // FX
                     if (lastThrustState && !thrust)
+                    {
+                        thrustSFX.Stop();
                         fireFX.Stop();
+                    }
 
 
                     // FX
                     if (!lastThrustState && thrust)
+                    {
                         fireFX.Play();
+                        thrustSFX.Play();
+                    }
 
 
                     if (thrust)
@@ -78,6 +87,7 @@ public class ZReactor01 : MonoBehaviour
                         if (currentFuelAmount <= 0)
                         {
                             fireFX.Stop();
+                            thrustSFX.Stop();
                             currentFuelAmount = 0;
                         }
                     }
@@ -101,6 +111,8 @@ public class ZReactor01 : MonoBehaviour
         UpdateFuelVisual();
 
 
+        // FX & SFX
+        thrustSFX.Stop();
         fireFX.Stop();
     }
 

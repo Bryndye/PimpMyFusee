@@ -5520,6 +5520,7 @@ MonoBehaviour:
   horizontalNoiseLimits: {x: -40, y: 40}
   fuelAmount: 10
   fireFX: {fileID: 2992903693666990835}
+  thrustSFX: {fileID: 6140295282079006334}
 --- !u!95 &5245867938955908097
 Animator:
   serializedVersion: 3
@@ -5567,6 +5568,10 @@ PrefabInstance:
       propertyPath: reactor01
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 686231502, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: zReactor01
+      value: 
+      objectReference: {fileID: 309990568}
     - target: {fileID: 1257271428, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_Size.x
       value: 1.1
@@ -5661,11 +5666,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7978135
+      value: -2.054653
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0187469
+      value: 2.625345
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.z

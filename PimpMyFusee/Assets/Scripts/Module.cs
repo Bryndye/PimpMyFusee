@@ -31,7 +31,8 @@ public class Module : MonoBehaviour
     bool dragging = false;
     bool endDrag = false;
     bool connected = false;
-
+    bool jointState = false;
+    bool lastJointState = false;
 
     bool connectedGraphicsEnabled = false;
     float connectedGraphicsEnableStartTime = 0f;
@@ -44,6 +45,10 @@ public class Module : MonoBehaviour
 
 
 
+    [SerializeField] AudioSource breakSound = null;
+
+
+
     [Header("SUB MODULES")]
     [SerializeField] Mother01 mother01 = null;
     [SerializeField] Reactor01 reactor01 = null;
@@ -51,6 +56,7 @@ public class Module : MonoBehaviour
     [SerializeField] Control01 control01 = null;
     [SerializeField] Shield01 shield01 = null;
     [SerializeField] ZReactor01 zReactor01 = null;
+
 
 
 
@@ -107,8 +113,27 @@ public class Module : MonoBehaviour
     private void Update()                                                                                   // UPDATE
     {
         if (enabled && isActiveAndEnabled)
+        {
             if (connectedGraphicsEnabled && connectedGraphicsEnableStartTime + 0.05f < Time.time)
                 EnableConnectGraphics(false);
+
+            if (activated)
+                if (connected)
+                {
+                    // SFX
+                    lastJointState = jointState;
+                    if (fixedJoint != null)
+                        jointState = true;
+                    else
+                        jointState = false;
+
+                    if (lastJointState && !jointState)
+                    {
+                        if (breakSound != null)
+                            breakSound.Play();
+                    }
+                }
+        }
     }
 
 
@@ -133,7 +158,8 @@ public class Module : MonoBehaviour
 
         rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.angularVelocity = 0;
-        
+        jointState = false;
+
         // Position
         if (state)
         {
@@ -193,12 +219,15 @@ public class Module : MonoBehaviour
 
     public void StartDrag(bool on = false)
     {
+        jointState = false;
         collider2d.enabled = !on;
         rigidbody2d.isKinematic = !on;
         rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.angularVelocity = 0;
+        /*
         if (on)
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, startRotation);
+            */
         //transform.parent = null;
         Destroy(fixedJoint);
         connectedModule = null;
@@ -248,6 +277,7 @@ public class Module : MonoBehaviour
         rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.angularVelocity = 0;
         rigidbody2d.isKinematic = true;
+        jointState = true;
         //fixedJoint.enabled = true;
 
         // COLLISION LAYER

@@ -101,7 +101,7 @@ public class ManagerShop : Singleton<ManagerShop>
                 {
                     Destroy(hit.collider.gameObject);
                 }
-            }
+            } 
         }
         else
         {

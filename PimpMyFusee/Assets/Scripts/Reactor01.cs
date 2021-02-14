@@ -24,6 +24,9 @@ public class Reactor01 : MonoBehaviour
     [Header("FX")]
     [SerializeField] ParticleSystem fireFX = null;
 
+    [Header("AUDIO")]
+    [SerializeField] AudioSource thrustSFX = null;
+
 
 
 
@@ -54,6 +57,7 @@ public class Reactor01 : MonoBehaviour
                 if (currentFuelAmount <= 0)
                 {
                     fireFX.Stop();
+                    thrustSFX.Stop();
                     currentFuelAmount = 0;
                 }
             }
@@ -73,10 +77,18 @@ public class Reactor01 : MonoBehaviour
         reactorActivated = state;
         currentFuelAmount = fuelAmount;
         UpdateFuelVisual();
+
+        // FX & SFX
         if (state)
+        {
+            thrustSFX.Play();
             fireFX.Play();
+        }
         else
+        {
+            thrustSFX.Stop();
             fireFX.Stop();
+        }
 
     }
 

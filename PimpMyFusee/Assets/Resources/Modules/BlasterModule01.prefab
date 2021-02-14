@@ -155,7 +155,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4ad69f24bebd3de419ab43260aad4ffc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.139
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -273,6 +273,7 @@ MonoBehaviour:
   connectedModuleScript: {fileID: 3600201886820487565}
   projectilePrefab: {fileID: 5432555832202153032, guid: b882fcfd1ccc4984d8acdcba21749396, type: 3}
   fireRate: 1
+  pewSFX: {fileID: 0}
 --- !u!95 &3524602732266378019
 Animator:
   serializedVersion: 3
@@ -312,6 +313,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 601240631, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 686231502, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: blaster01
       value: 
@@ -362,11 +367,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.6133425
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5.6395683
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.z

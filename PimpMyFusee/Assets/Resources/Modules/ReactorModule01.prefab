@@ -5254,6 +5254,7 @@ MonoBehaviour:
   horizontalNoiseLimits: {x: -40, y: 40}
   fuelAmount: 10
   fireFX: {fileID: 2992903693666990835}
+  thrustSFX: {fileID: 6140295282079006334}
 --- !u!95 &5245867938955908097
 Animator:
   serializedVersion: 3
@@ -5395,11 +5396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.561887
+      value: -2.05
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.937891
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 8019461466902291790, guid: a61bf8108959fc442839cb014b2f92fe, type: 3}
       propertyPath: m_LocalPosition.z
