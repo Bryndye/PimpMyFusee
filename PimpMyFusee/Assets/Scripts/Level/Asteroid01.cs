@@ -10,11 +10,17 @@ public class Asteroid01 : MonoBehaviour
     [SerializeField] Rigidbody2D rigidbody2d = null;
 
 
+    [SerializeField] GameObject smallAsteroidPrefab = null;
+
+    
     [Header("PARAMETERS")]
     [SerializeField] Vector2 randomRotationSpeedLimits = new Vector2(-5f, 5f);
     [SerializeField] Vector2 randomForceXLimits = new Vector2(-5f, 5f);
     [SerializeField] Vector2 randomForceYLimits = new Vector2(-5f, 5f);
     [SerializeField] Vector2 randomScaleLimits = new Vector2(0.5f, 5f);
+    float baseScale = 0;
+    [SerializeField] bool shouldSpawnSmallOnes = false;
+
 
 
 
@@ -30,10 +36,14 @@ public class Asteroid01 : MonoBehaviour
     {
         if (rigidbody2d != null)
         {
+            baseScale = (transform.localScale.x + transform.localScale.y) / 2;
+
             // LOOK
             Vector3 randomRotation = new Vector3(0, 0, Random.Range(0f, 360f));
             transform.eulerAngles = randomRotation;
             transform.localScale = transform.localScale * Random.Range(randomScaleLimits.x, randomScaleLimits.y);
+            float currentScale = (transform.localScale.x + transform.localScale.y) / 2;
+
 
 
             // PHYSICS
@@ -43,6 +53,9 @@ public class Asteroid01 : MonoBehaviour
 
             rigidbody2d.AddTorque(randomTorque);
             rigidbody2d.AddForce(new Vector2(randomForceX, randomForceY), ForceMode2D.Impulse);
+
+
+            rigidbody2d.mass = rigidbody2d.mass * (currentScale / baseScale);
         }
     }
 

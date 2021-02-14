@@ -21,7 +21,7 @@ public class Projectile01 : MonoBehaviour
 
     private void Start()                                                        // START
     {
-        Invoke("StartProjectile", 0.05f);
+        StartProjectile();
     }
 
     void StartProjectile()
@@ -41,6 +41,23 @@ public class Projectile01 : MonoBehaviour
             if (GetComponent<Module>())
                 moduleShooter = GetComponent<Module>();
     }
+
+
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject != moduleShooter.gameObject)
+            Destroy(gameObject);
+    }
+
+
+
+
+
+
+
 
 
     // EDITOR

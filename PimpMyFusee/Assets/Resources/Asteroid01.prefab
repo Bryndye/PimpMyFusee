@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7116071429332846833}
   - component: {fileID: 7116071429332846834}
   - component: {fileID: 7116071429332846835}
+  - component: {fileID: 469904100}
   m_Layer: 0
   m_Name: Asteroid01
   m_TagString: Untagged
@@ -89,9 +90,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 7116071429332846835}
+  smallAsteroidPrefab: {fileID: 0}
   randomRotationSpeedLimits: {x: -2000, y: 2000}
   randomForceXLimits: {x: -10, y: 10}
   randomForceYLimits: {x: -10, y: 10}
+  randomScaleLimits: {x: 0.5, y: 3}
+  shouldSpawnSmallOnes: 0
 --- !u!50 &7116071429332846835
 Rigidbody2D:
   serializedVersion: 4
@@ -104,7 +108,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -113,6 +117,48 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &469904100
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116071429332846839}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.6837792, y: 0.28666353}
+      - {x: 2.2751768, y: 0.51328564}
+      - {x: 1.4549763, y: 1.9073777}
+      - {x: 0.449728, y: 1.7674923}
+      - {x: 0.25263762, y: 2.2171707}
+      - {x: -0.46972656, y: 2.361837}
+      - {x: -0.6454389, y: 2.199801}
+      - {x: -1.0847132, y: 2.373201}
+      - {x: -2.0934675, y: 1.7976129}
+      - {x: -1.9494464, y: 0.11414349}
+      - {x: -2.2131755, y: -0.14775705}
+      - {x: -1.6296589, y: -0.49530792}
+      - {x: -1.8245282, y: -1.0044155}
+      - {x: -0.9157839, y: -2.0261245}
+      - {x: 0.64716804, y: -1.6560528}
+      - {x: 1.3147739, y: -2.020665}
+      - {x: 2.2665598, y: -0.15256268}
 --- !u!1 &7116071429376325858
 GameObject:
   m_ObjectHideFlags: 0
